@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BINUH HR — Perpetrators</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/perpetrators.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/logo.png" alt="OHCHR" />
+      <div class="brand-text">
+        <span class="brand-title">BINUH Human Rights</span>
+        <span class="brand-sub">Perpetrators — Actor Attribution</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html" data-i18n="nav.overview">Overview</a>
+      <a class="nav-link" href="gender.html" data-i18n="nav.gender">Gender</a>
+      <a class="nav-link active" href="perpetrators.html" data-i18n="nav.perpetrators">Perpetrators</a>
+      <a class="nav-link" href="geographic.html" data-i18n="nav.geographic">Geographic</a>
+      <a class="nav-link" href="mara.html" data-i18n="nav.mara.link">Sexual violence involving armed actors (MARA)</a>
+      <a class="nav-link" href="maps.html" data-i18n="nav.maps">Maps</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container page-header-inner">
+      <div class="page-tag" data-i18n="page.tag.perpetrators">PERPETRATOR GROUP ANALYSIS</div>
+      <h1 class="page-title">Perpetrators — <span>Actor Attribution</span></h1>
+      <p class="page-disclaimer">Analysis of casualties by alleged perpetrator: Gangs, Security Forces, and Population Justice actors. Sexual violence involving armed actors is tracked separately on the <a
+          href="mara.html" style="color:var(--accent)">Sexual Violence Involving Armed Actors page</a>.</p>
+      <div class="page-meta">
+        <div class="meta-item">👥 <strong data-i18n="meta.groups.label">Groups:</strong> <span
+            data-i18n="meta.groups.perp">Gangs · Security Forces · Population Justice</span></div>
+        <div class="meta-item">📅 <strong data-i18n="meta.period.label">Period:</strong> <span data-i18n="badge.q1">Q1
+            2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="container">
+
+      <!-- S1: KPIs -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">📊</span><span
+            data-i18n="s.perp.kpi">Q1 2026 — Victims by Perpetrator Group</span></h2>
+        <div class="grid grid-kpi">
+          <div class="kpi-card total">
+            <span class="kpi-icon">👥</span>
+            <div class="kpi-label" data-i18n="kpi.label.total_q1">Total Q1 Victims</div>
+            <div class="kpi-value" id="kpi-total" data-count="0">0</div>
+            <div class="kpi-sub" data-i18n="kpi.sub.killed_injured_abducted">Killed · Injured · Abducted</div>
+          </div>
+          <div class="kpi-card killed">
+            <span class="kpi-icon">🔫</span>
+            <div class="kpi-label" data-i18n="kpi.label.gangs">Gangs</div>
+            <div class="kpi-value" id="kpi-gangs" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-gangs-pct"></div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid var(--conventional)">
+            <span class="kpi-icon">🛡️</span>
+            <div class="kpi-label" style="color:var(--conventional)" data-i18n="kpi.label.security_forces">Security
+              Forces</div>
+            <div class="kpi-value" id="kpi-pnh" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-pnh-pct"></div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid var(--opportunistic)">
+            <span class="kpi-icon">⚖️</span>
+            <div class="kpi-label" style="color:var(--opportunistic)" data-i18n="kpi.label.pop_justice">Population
+              Justice</div>
+            <div class="kpi-value" id="kpi-popjustice" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-popjustice-pct"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S2: Distribution 2 cards -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(244,63,94,0.15)">📈</span><span
+            data-i18n="s.perp.distribution">Perpetrator Distribution — Q1 2026</span></h2>
+        <div class="grid grid-2">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title" data-i18n="ct.p.donut">Share by Perpetrator Group</div>
+                <p class="chart-subtitle" data-i18n="cs.p.donut">What % of Q1 casualties are attributed to each actor
+                  type.</p>
+              </div>
+              <span class="chart-badge q4" data-i18n="badge.q1">Q1 2026</span>
+            </div>
+            <div id="chart-perp-donut" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.p.violation">Violation Type by Perpetrator</div>
+              <p class="chart-subtitle" data-i18n="cs.p.violation">Killed, injured, and abducted victims caused by each
+                perpetrator group.</p>
+            </div>
+            <div id="chart-perp-violation" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S3: Most Affected Communes per Perpetrator Group -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(52,211,153,0.15)">🗺️</span><span
+            data-i18n="s.perp.geographic">Most Affected Commune per Perpetrator Group</span></h2>
+        <div class="grid grid-3">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.p.commune.gangs">Gangs — Top 5 Communes</div>
+              <p class="chart-subtitle" data-i18n="cs.p.commune.gangs">Top 5 communes with the most victims attributed
+                to Gangs (Q1 2026).</p>
+            </div>
+            <div id="chart-commune-gangs" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.p.commune.sf">Security Forces — Top 5 Communes</div>
+              <p class="chart-subtitle" data-i18n="cs.p.commune.sf">Top 5 communes with the most victims attributed to
+                Security Forces (Q1 2026).</p>
+            </div>
+            <div id="chart-commune-sf" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.p.commune.pj">Population Justice — Top 5 Communes</div>
+              <p class="chart-subtitle" data-i18n="cs.p.commune.pj">Top 5 communes with the most victims attributed to
+                Population Justice (Q1 2026).</p>
+            </div>
+            <div id="chart-commune-popjustice" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S6: Insights -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">💡</span><span
+            data-i18n="s.perp.insights">Perpetrator Analysis Insights</span></h2>
+        <div class="grid grid-2">
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.main_casualties">Main Violence — Casualties</h3>
+            <ul class="insight-list" id="insights-left"></ul>
+          </div>
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.sf_accountability">Security Forces &amp; Accountability
+            </h3>
+            <ul class="insight-list" id="insights-right"></ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy.v6">© BINUH Human Rights · Report 6.0</p>
+      <p><a href="#" id="dl-all-json" data-i18n="footer.json">Download JSON</a> · <a href="#" id="dl-summary-csv"
+          data-i18n="footer.csv">Download CSV</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

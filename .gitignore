@@ -1,0 +1,8 @@
+__pycache__/
+.DS_Store
+*.pyc
+
+# Local source data — never commit (public repo)
+documents/
+*.csv
+OHCHR Icon.png

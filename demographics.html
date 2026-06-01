@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BINUH HR — Demographics</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/demographics.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html"><img src="assets/logo.png" alt="OHCHR" />
+      <div class="brand-text"><span class="brand-title" data-i18n="brand.title">BINUH Human Rights</span><span
+          class="brand-sub" data-i18n="brand.sub.demographics"></span></div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Overview</a>
+      <a class="nav-link" href="gender.html">Gender</a>
+      <a class="nav-link" href="perpetrators.html">Perpetrators</a>
+      <a class="nav-link" href="geographic.html">Geographic</a>
+      <a class="nav-link" href="mara.html">Sexual violence involving armed actors(MARA)</a>
+      <a class="nav-link" href="maps.html">Maps</a>
+    </div>
+  </nav>
+  <div class="page-header">
+    <div class="container page-header-inner">
+      <div class="page-tag" id="page-period">Q1 2026</div>
+      <h1 class="page-title">Victims — <span>Demographics</span></h1>
+    </div>
+  </div>
+  <main class="main">
+    <div class="container">
+      <section class="section">
+        <div class="grid grid-kpi">
+          <div class="kpi-card male">
+            <div class="kpi-label" data-i18n="kpi.male">Men</div>
+            <div class="kpi-value" id="kpi-male" data-count="0">0</div>
+          </div>
+          <div class="kpi-card female">
+            <div class="kpi-label" data-i18n="kpi.female">Women</div>
+            <div class="kpi-value" id="kpi-female" data-count="0">0</div>
+          </div>
+          <div class="kpi-card boys">
+            <div class="kpi-label" data-i18n="kpi.boys">Boys</div>
+            <div class="kpi-value" id="kpi-boys" data-count="0">0</div>
+          </div>
+          <div class="kpi-card girls">
+            <div class="kpi-label" data-i18n="kpi.girls">Girls</div>
+            <div class="kpi-value" id="kpi-girls" data-count="0">0</div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="grid grid-2">
+          <div class="chart-wrap">
+            <div id="chart-sex-donut" class="plotly-chart"></div>
+          </div>
+          <div class="chart-wrap">
+            <div id="chart-age-bar" class="plotly-chart"></div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="chart-wrap">
+          <div id="chart-gender-monthly" class="plotly-chart"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy">© BINUH Human Rights</p>
+      <p><a href="#" id="dl-all-json" data-i18n="footer.json">Download JSON</a> · <a href="#" id="dl-summary-csv"
+          data-i18n="footer.csv">Download CSV</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

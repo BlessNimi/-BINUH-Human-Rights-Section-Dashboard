@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BINUH HR — Gender &amp; Sex Analysis</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/gender.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/logo.png" alt="OHCHR" />
+      <div class="brand-text">
+        <span class="brand-title">BINUH Human Rights</span>
+        <span class="brand-sub">Gender &amp; Sex — Victim Analysis</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html" data-i18n="nav.overview">Overview</a>
+      <a class="nav-link active" href="gender.html" data-i18n="nav.gender">Gender</a>
+      <a class="nav-link" href="perpetrators.html" data-i18n="nav.perpetrators">Perpetrators</a>
+      <a class="nav-link" href="geographic.html" data-i18n="nav.geographic">Geographic</a>
+      <a class="nav-link" href="mara.html" data-i18n="nav.mara.link">Sexual violence involving armed actors (MARA)</a>
+      <a class="nav-link" href="maps.html" data-i18n="nav.maps">Maps</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container page-header-inner">
+      <div class="page-tag" data-i18n="page.tag.gender">GENDER DISAGGREGATED ANALYSIS</div>
+      <h1 class="page-title">Gender &amp; Sex — <span>Victim Analysis</span></h1>
+      <p class="page-disclaimer">Breakdown of Q1 2026 victims of gang-related violence by gender and sex across all
+        violation types and communes.</p>
+      <div class="page-meta">
+        <div class="meta-item">👥 <strong data-i18n="meta.categories.label">Categories:</strong> <span
+            data-i18n="meta.categories.gender">Men · Women · Boys · Girls</span></div>
+        <div class="meta-item">📅 <strong data-i18n="meta.period.label">Period:</strong> <span
+            data-i18n="meta.period.q1_2026">January – March 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="container">
+
+      <!-- S1: KPIs -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">📊</span><span
+            data-i18n="s.gender.kpi">Q1 2026 — Victims by Gender / Sex</span></h2>
+        <div class="grid grid-kpi">
+          <div class="kpi-card total">
+            <span class="kpi-icon">👥</span>
+            <div class="kpi-label" data-i18n="kpi.label.total_casualties">Total Casualties</div>
+            <div class="kpi-value" id="kpi-total" data-count="0">0</div>
+            <div class="kpi-sub" data-i18n="kpi.sub.killed_injured">Killed · Injured</div>
+          </div>
+          <div class="kpi-card" style="--top-color:var(--male)">
+            <span class="kpi-icon">🧑</span>
+            <div class="kpi-label" style="color:var(--male)" data-i18n="kpi.label.men">Men</div>
+            <div class="kpi-value" id="kpi-men" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-men-pct"></div>
+          </div>
+          <div class="kpi-card" style="--top-color:var(--female)">
+            <span class="kpi-icon">👩</span>
+            <div class="kpi-label" style="color:var(--female)" data-i18n="kpi.label.women">Women</div>
+            <div class="kpi-value" id="kpi-women" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-women-pct"></div>
+          </div>
+          <div class="kpi-card" style="--top-color:var(--boys)">
+            <span class="kpi-icon">👦</span>
+            <div class="kpi-label" style="color:var(--boys)" data-i18n="kpi.label.boys">Boys</div>
+            <div class="kpi-value" id="kpi-boys" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-boys-pct"></div>
+          </div>
+          <div class="kpi-card" style="--top-color:var(--girls)">
+            <span class="kpi-icon">👧</span>
+            <div class="kpi-label" style="color:var(--girls)" data-i18n="kpi.label.girls">Girls</div>
+            <div class="kpi-value" id="kpi-girls" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-girls-pct"></div>
+          </div>
+          <div class="kpi-card sgbv">
+            <span class="kpi-icon">🧒</span>
+            <div class="kpi-label" data-i18n="kpi.label.children">Children (Boys+Girls)</div>
+            <div class="kpi-value" id="kpi-children" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-children-pct"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S2: Gender Distribution -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(244,63,94,0.15)">📊</span><span
+            data-i18n="s.gender.distribution">Gender Distribution — Q1 2026</span></h2>
+        <div class="grid grid-3">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.g.donut">Overall Gender Distribution</div>
+              <p class="chart-subtitle" data-i18n="cs.g.donut">Share of total Q1 2026 victims by gender and sex
+                category.</p>
+            </div>
+            <div id="chart-gender-donut" class="plotly-chart" style="min-height:300px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.g.violation">Gender within Each Violation Type</div>
+              <p class="chart-subtitle" data-i18n="cs.g.violation">Killed, injured, and abducted victims disaggregated
+                by gender.</p>
+            </div>
+            <div id="chart-gender-violation" class="plotly-chart" style="min-height:300px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.g.pct">Violation Share by Gender</div>
+              <p class="chart-subtitle" data-i18n="cs.g.pct">100% normalised view — gender composition within each
+                violation type.</p>
+            </div>
+            <div id="chart-gender-pct" class="plotly-chart" style="min-height:300px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S1c: Casualties & Abductions by Location and Gender -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(52,211,153,0.15)">🌍</span><span
+            data-i18n="s.gender.cross">Casualty &amp; Abduction Distribution by Location and Gender</span></h2>
+        <div class="grid grid-2">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.g.commune_casualties">Casualties by Commune — Gender Breakdown
+              </div>
+              <p class="chart-subtitle" data-i18n="cs.g.commune_casualties">Distribution of killed and injured victims
+                across top communes, disaggregated by gender (Q1 2026).</p>
+            </div>
+            <div id="chart-commune-casualties-gender" class="plotly-chart" style="min-height:400px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.g.commune_abducted">Abductions by Commune — Q1 2026</div>
+              <p class="chart-subtitle" data-i18n="cs.g.commune_abducted">Total abducted victims per commune, ranked by
+                count (Q1 2026, total: 57).</p>
+            </div>
+            <div id="chart-commune-abducted" class="plotly-chart" style="min-height:400px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S7: Insights -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">💡</span><span
+            data-i18n="s.gender.insights">Gender Analysis Insights</span></h2>
+        <div class="grid grid-2">
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.victims_demo">Victims &amp; Demographics</h3>
+            <ul class="insight-list" id="insights-left"></ul>
+          </div>
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.sexual_children">Sexual Violence &amp; Children</h3>
+            <ul class="insight-list" id="insights-right"></ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy.v6">© BINUH Human Rights · Report 6.0</p>
+      <p><a href="#" id="dl-all-json" data-i18n="footer.json">Download JSON</a> · <a href="#" id="dl-summary-csv"
+          data-i18n="footer.csv">Download CSV</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

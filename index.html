@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BINUH HR — Gang-related violence in Haiti</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/overview.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/logo.png" alt="OHCHR" />
+      <div class="brand-text">
+        <span class="brand-title">BINUH Human Rights</span>
+        <span class="brand-sub">Gang-related violence in Haiti</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link active" href="index.html" data-i18n="nav.overview">Overview</a>
+      <a class="nav-link" href="gender.html" data-i18n="nav.gender">Gender</a>
+      <a class="nav-link" href="perpetrators.html" data-i18n="nav.perpetrators">Perpetrators</a>
+      <a class="nav-link" href="geographic.html" data-i18n="nav.geographic">Geographic</a>
+      <a class="nav-link" href="mara.html" data-i18n="nav.mara.link">Sexual violence involving armed actors(MARA)</a>
+      <a class="nav-link" href="maps.html" data-i18n="nav.maps">Maps</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="page-header">
+    <div class="container page-header-inner">
+      <div class="page-tag" id="page-period">Q1 2026</div>
+      <h1 class="page-title">Gang-related Violence in Haiti — <span>Overview</span></h1>
+      <p class="page-disclaimer" data-i18n="disclaimer.overview">Comprehensive analysis of conflict-related casualties documented by BINUH Human Rights Division in Haiti. Data are non-exhaustive and subject to under-reporting.</p>
+      <div class="page-meta">
+        <div class="meta-item">📅 <strong data-i18n="meta.period.label">Period:</strong> <span data-i18n="meta.period.q1_2026">January – March 2026</span></div>
+        <div class="meta-item">🗺️ <strong data-i18n="meta.coverage.label">Coverage:</strong> <span data-i18n="meta.coverage.all">All Departments, 40+ Communes</span></div>
+        <div class="meta-item">📋 <strong data-i18n="meta.source.label">Source:</strong> <span data-i18n="meta.source.binuh">BINUH HRD Incident Database</span></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="container">
+
+      <!-- S1: KPIs -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">📊</span><span data-i18n="s.overview.kpi">Q1 2026 Victims</span></h2>
+        <div class="grid grid-kpi">
+          <div class="kpi-card total">
+            <span class="kpi-icon">👥</span>
+            <div class="kpi-label" data-i18n="kpi.label.total_casualties">Total Casualties</div>
+            <div class="kpi-value" id="kpi-total" data-count="0">0</div>
+            <div class="kpi-sub" data-i18n="kpi.sub.killed_injured">Killed · Injured</div>
+          </div>
+          <div class="kpi-card killed">
+            <span class="kpi-icon kpi-icon-box">□</span>
+            <div class="kpi-label" data-i18n="kpi.killed">Killed</div>
+            <div class="kpi-value" id="kpi-killed" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-killed-pct">of total</div>
+          </div>
+          <div class="kpi-card injured">
+            <span class="kpi-icon kpi-icon-box">□</span>
+            <div class="kpi-label" data-i18n="kpi.injured">Injured</div>
+            <div class="kpi-value" id="kpi-injured" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-injured-pct">of total</div>
+          </div>
+          <div class="kpi-card abducted">
+            <span class="kpi-icon">⛓️</span>
+            <div class="kpi-label" data-i18n="kpi.abducted">Abducted</div>
+            <div class="kpi-value" id="kpi-abducted" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-abducted-pct">of total</div>
+          </div>
+          <div class="kpi-card sgbv">
+            <span class="kpi-icon">🔴</span>
+            <div class="kpi-label" data-i18n="kpi.label.mara_sexual">Sexual Violence (MARA)</div>
+            <div class="kpi-value" id="kpi-mara" data-count="0">0</div>
+            <div class="kpi-sub" data-i18n="kpi.sub.mara_sexual">Sexual violence involving armed actors</div>
+          </div>
+        </div>
+        <!-- Sexual Violence note -->
+        <div class="sgbv-note" style="margin-top:16px">
+          <div class="sgbv-note-icon">⚠️</div>
+          <div class="sgbv-note-body" id="mara-note-body">
+            <strong>Note on sexual violence involving armed actors:</strong>
+            The <span class="sgbv-note-count" id="note-mara-total">292</span> cases documented in Q1 2026 are
+            tracked through a separate reporting methodology and are <strong>not included</strong> in the total victim
+            count above. Including them together would result in double-counting.
+            <a class="sgbv-note-link" href="mara.html">View full analysis →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- S2: Casualty Breakdown (3 cards) -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(244,63,94,0.15)">📈</span><span data-i18n="s.overview.breakdown">Q1 2026 Casualty Breakdown</span></h2>
+        <div class="grid grid-3">
+          <!-- Card 1: Violation donut -->
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title" data-i18n="ct.violation_donut">Violation Type Distribution</div>
+                <p class="chart-subtitle" data-i18n="cs.violation_donut">How Q1 casualties break down by harm type — killed, injured and abducted. Abducted is shown separately from casualty totals.</p>
+              </div>
+              <span class="chart-badge q4" data-i18n="badge.q1">Q1 2026</span>
+            </div>
+            <div id="chart-violation-donut" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+          <!-- Card 2: % bars + QoQ -->
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.pct_bars">Casualty Percentages</div>
+            </div>
+            <p class="chart-explain" data-i18n="cx.pct_bars">Share of each violation type among all Q1 2026 documented victims.</p>
+            <div id="pct-bars"></div>
+            <div style="margin-top:20px">
+              <div class="card-title" style="font-size:11px;margin-bottom:10px" data-i18n="ct.mara_qoq">MARA — Quarterly Trend</div>
+              <table class="data-table" id="mara-qoq-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="table.period">Period</th>
+                    <th style="text-align:right" data-i18n="table.total">Total</th>
+                    <th style="text-align:right" data-i18n="kpi.label.rape">Rape</th>
+                    <th style="text-align:right" data-i18n="th.coll_rape">Coll. Rape</th>
+                  </tr>
+                </thead>
+                <tbody id="mara-qoq-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Card 3: Gender donut -->
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title" data-i18n="ct.gender_donut_ov">Victims by Gender / Sex</div>
+                <p class="chart-subtitle" data-i18n="cs.gender_donut_ov">Distribution of Q1 victims across demographic groups.</p>
+              </div>
+              <span class="chart-badge q4" data-i18n="badge.q1">Q1 2026</span>
+            </div>
+            <div id="chart-gender-donut" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S3: Trends (2 cards) -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(52,211,153,0.15)">📉</span><span data-i18n="s.overview.trends">Trends &amp; Comparisons</span></h2>
+        <div class="grid grid-2">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title" data-i18n="ct.mara_trend_ov">MARA — Quarterly Trend (All Periods)</div>
+                <p class="chart-subtitle" data-i18n="cs.mara_trend_ov">Sexual violence involving armed actors documented per quarter. Grouped by type: Rape and Collective Rape.</p>
+              </div>
+              <span class="chart-badge yearly" data-i18n="badge.all_quarters">All Quarters</span>
+            </div>
+            <div id="chart-mara-trend" class="plotly-chart"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title" data-i18n="ct.monthly_ov">Monthly Victims — Q1 2026</div>
+                <p class="chart-subtitle" data-i18n="cs.monthly_ov">Month-by-month breakdown of victims of gang-related violence by violation type (killed, injured and abductions).</p>
+              </div>
+              <span class="chart-badge q4" data-i18n="badge.q1">Q1 2026</span>
+            </div>
+            <div id="chart-monthly" class="plotly-chart"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S4: Monthly full-width -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(251,146,60,0.15)">📅</span><span data-i18n="s.overview.monthly">Monthly Breakdown — Q1 2026</span></h2>
+        <div class="chart-wrap">
+          <div class="chart-header">
+            <div>
+              <div class="chart-title" data-i18n="ct.monthly_full">Monthly Casualties by Violation Type</div>
+              <p class="chart-subtitle" data-i18n="cs.monthly_full">January–March 2026 breakdown of victims of gang-related violence. Killings and injuries are the primary focus; abductions are tracked separately.</p>
+            </div>
+            <span class="chart-badge q4" data-i18n="badge.q1">Q1 2026</span>
+          </div>
+          <div id="chart-monthly-full" class="plotly-chart"></div>
+        </div>
+      </section>
+
+      <!-- S5: Insights (2 cards) -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">💡</span><span data-i18n="s.overview.insights">Key Insights — Q1 2026</span></h2>
+        <div class="grid grid-2">
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.casualties_demo">Casualties &amp; Demographics</h3>
+            <ul class="insight-list" id="insights-left"></ul>
+          </div>
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.perp_sexual">Perpetrators &amp; Sexual Violence</h3>
+            <ul class="insight-list" id="insights-right"></ul>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy.v6">© BINUH Human Rights · Report 6.0</p>
+      <p><a href="#" id="dl-all-json" data-i18n="footer.json">Download JSON</a> · <a href="#" id="dl-summary-csv" data-i18n="footer.csv">Download CSV</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>

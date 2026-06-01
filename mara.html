@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BINUH HR — Sexual Violence Involving Armed Actors (MARA)</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/mara.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/logo.png" alt="OHCHR" />
+      <div class="brand-text">
+        <span class="brand-title">BINUH Human Rights</span>
+        <span class="brand-sub">Sexual Violence Involving Armed Actors (MARA)</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html" data-i18n="nav.overview">Overview</a>
+      <a class="nav-link" href="gender.html" data-i18n="nav.gender">Gender</a>
+      <a class="nav-link" href="perpetrators.html" data-i18n="nav.perpetrators">Perpetrators</a>
+      <a class="nav-link" href="geographic.html" data-i18n="nav.geographic">Geographic</a>
+      <a class="nav-link active" href="mara.html" data-i18n="nav.mara.link">Sexual violence involving armed actors (MARA)</a>
+      <a class="nav-link" href="maps.html" data-i18n="nav.maps">Maps</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container page-header-inner">
+      <div class="page-tag" data-i18n="page.tag.mara">SEXUAL VIOLENCE INVOLVING ARMED ACTORS (MARA)</div>
+      <h1 class="page-title">Sexual Violence Involving Armed Actors — <span>Deep Dive Analysis</span></h1>
+      <p class="page-disclaimer">Sexual violence involving armed actors (MARA) is tracked separately from main casualty
+        data to avoid double-counting. Cases cover rape and collective rape perpetrated by gang members, Security Forces,
+        self-defence groups, and unknown actors in Haiti. Data are non-exhaustive and subject to significant
+        under-reporting.</p>
+      <div class="page-meta">
+        <div class="meta-item">🔴 <strong data-i18n="meta.types.label">Types:</strong> <span data-i18n="meta.types.mara">Rape · Collective Rape</span></div>
+        <div class="meta-item">👥 <strong data-i18n="meta.perp.label">Perpetrators:</strong> <span data-i18n="meta.perp.mara">Gangs · PNH / HNP · Self-Defence Group · Unknown</span></div>
+        <div class="meta-item">📅 <strong data-i18n="meta.period.label">Period:</strong> <span data-i18n="meta.period.q1_2026">January – March 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="container">
+
+      <!-- S1: KPIs -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(244,114,182,0.15)">🔴</span><span data-i18n="s.mara.kpi">Q1 2026 — Sexual Violence Involving Armed Actors (MARA)</span></h2>
+        <div class="grid grid-kpi">
+          <div class="kpi-card sgbv">
+            <span class="kpi-icon">🔴</span>
+            <div class="kpi-label" data-i18n="kpi.label.mara_total">Total Victims (Sexual Violence)</div>
+            <div class="kpi-value" id="kpi-mara-total" data-count="0">0</div>
+            <div class="kpi-sub" data-i18n="kpi.sub.rape_collective">Rape + Collective Rape</div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid #ec4899">
+            <span class="kpi-icon">🚨</span>
+            <div class="kpi-label" style="color:#ec4899" data-i18n="kpi.label.rape">Rape</div>
+            <div class="kpi-value" id="kpi-rape" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-rape-pct"></div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid #f9a8d4">
+            <span class="kpi-icon">⚠️</span>
+            <div class="kpi-label" style="color:#f9a8d4" data-i18n="kpi.label.collective_rape">Collective Rape</div>
+            <div class="kpi-value" id="kpi-collective" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-collective-pct"></div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid var(--female)">
+            <span class="kpi-icon">👩</span>
+            <div class="kpi-label" style="color:var(--female)" data-i18n="kpi.label.female_victims">Female Victims</div>
+            <div class="kpi-value" id="kpi-mara-female" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-mara-female-pct"></div>
+          </div>
+          <div class="kpi-card" style="border-top:3px solid var(--boys)">
+            <span class="kpi-icon">🧒</span>
+            <div class="kpi-label" style="color:var(--boys)" data-i18n="kpi.label.minors">Minors (0–17)</div>
+            <div class="kpi-value" id="kpi-mara-minor" data-count="0">0</div>
+            <div class="kpi-sub" id="kpi-mara-minor-pct"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S2: Quarterly trend + Type breakdown -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(244,63,94,0.15)">📈</span><span data-i18n="s.mara.trend">Historical Trend — Sexual Violence Involving Armed Actors</span></h2>
+        <div class="grid grid-2">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title" data-i18n="ct.m.trend">Quarterly MARA Trend (Q3 2024 – Q1 2026)</div>
+                <p class="chart-subtitle" data-i18n="cs.m.trend">Total victims of sexual violence involving armed actors per quarter — stacked by type.</p>
+              </div>
+              <span class="chart-badge q4" data-i18n="badge.trend">Trend</span>
+            </div>
+            <div id="chart-mara-trend" class="plotly-chart" style="min-height:320px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.m.type_donut">Q1 2026 — Type Distribution</div>
+              <p class="chart-subtitle" data-i18n="cs.m.type_donut">Rape vs Collective Rape — share of total MARA cases in Q1 2026.</p>
+            </div>
+            <div id="chart-mara-type-donut" class="plotly-chart" style="min-height:320px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S3: Perpetrator attribution -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon"
+            style="background:rgba(129,140,248,0.15)">⚖️</span><span data-i18n="s.mara.perpetrator">Perpetrator Attribution — Q1 2026</span></h2>
+        <div class="grid grid-2">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title" data-i18n="ct.m.perp_donut">MARA by Perpetrator Group</div>
+                <p class="chart-subtitle" data-i18n="cs.m.perp_donut">Share of sexual violence cases attributed to each actor type in Q1 2026.</p>
+              </div>
+              <span class="chart-badge q4" data-i18n="badge.q1">Q1 2026</span>
+            </div>
+            <div id="chart-mara-perp-donut" class="plotly-chart" style="min-height:300px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.m.perp_bar">Rape &amp; Collective Rape by Perpetrator</div>
+              <p class="chart-subtitle" data-i18n="cs.m.perp_bar">Breakdown of rape and collective rape cases per perpetrator group.</p>
+            </div>
+            <div id="chart-mara-perp-bar" class="plotly-chart" style="min-height:300px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S4: Geographic -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon"
+            style="background:rgba(52,211,153,0.15)">🗺️</span><span data-i18n="s.mara.geographic">Geographic Distribution — Q1 2026</span></h2>
+        <div class="chart-wrap">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="ct.m.commune">Sexual Violence Involving Armed Actors Victims by Commune</div>
+            <p class="chart-subtitle" data-i18n="cs.m.commune">Top affected communes — total sexual violence victims in Q1 2026.</p>
+          </div>
+          <div id="chart-mara-commune" class="plotly-chart" style="min-height:360px"></div>
+        </div>
+      </section>
+
+      <!-- S5: Gender + Age -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(244,114,182,0.15)">👥</span><span data-i18n="s.mara.gender_age">Gender &amp; Age Profile — Q1 2026</span></h2>
+        <div class="grid grid-3">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.m.gender">Victims by Sex</div>
+              <p class="chart-subtitle" data-i18n="cs.m.gender">Female and male breakdown of MARA victims in Q1 2026.</p>
+            </div>
+            <div id="chart-mara-gender" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.m.age">Age Breakdown</div>
+              <p class="chart-subtitle" data-i18n="cs.m.age">Minors (0–17) vs Adults (18–59) among documented MARA victims.</p>
+            </div>
+            <div id="chart-mara-age" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.m.type_gender">Violence Type by Sex</div>
+              <p class="chart-subtitle" data-i18n="cs.m.type_gender">Rape and Collective Rape disaggregated by victim sex.</p>
+            </div>
+            <div id="chart-mara-type-gender" class="plotly-chart" style="min-height:280px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S6: Monthly -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">📅</span><span data-i18n="s.mara.monthly">Monthly Breakdown — Q1 2026</span></h2>
+        <div class="grid grid-2">
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.m.monthly">MARA Cases by Month (Q1 2026)</div>
+              <p class="chart-subtitle" data-i18n="cs.m.monthly">January, February, and March 2026 — total sexual violence involving armed actors.</p>
+            </div>
+            <div id="chart-mara-monthly" class="plotly-chart" style="min-height:300px"></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-header">
+              <div class="chart-title" data-i18n="ct.m.monthly_type">Monthly Type Split (Q1 2026)</div>
+              <p class="chart-subtitle" data-i18n="cs.m.monthly_type">Rape vs Collective Rape per month in Q1 2026.</p>
+            </div>
+            <div id="chart-mara-monthly-type" class="plotly-chart" style="min-height:300px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S7: Insights -->
+      <section class="section">
+        <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">💡</span><span data-i18n="s.mara.insights">MARA Analysis Insights</span></h2>
+        <div class="grid grid-2">
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.patterns_scale">Patterns &amp; Scale</h3>
+            <ul class="insight-list" id="insights-left"></ul>
+          </div>
+          <div class="insight-box">
+            <h3 class="insight-heading" data-i18n="insight.h.accountability_docs">Accountability &amp; Documentation</h3>
+            <ul class="insight-list" id="insights-right"></ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy.v6">© BINUH Human Rights · Report 6.0</p>
+      <p><a href="#" id="dl-all-json" data-i18n="footer.json">Download JSON</a> · <a href="#" id="dl-summary-csv" data-i18n="footer.csv">Download CSV</a></p>
+    </div>
+  </footer>
+</body>
+
+</html>
