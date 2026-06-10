@@ -106,7 +106,7 @@ function renderGeographic() {
   const commEl = document.getElementById('kpi-communes');
   if (commEl) commEl.dataset.count = communes.length;
   const totEl = document.getElementById('kpi-total');
-  if (totEl) totEl.dataset.count = totalVictims;
+  if (totEl) totEl.dataset.count = (q.killed || 0) + (q.injured || 0);
 
   // ── S2: Department charts ──────────────────────────────────────────────────
   const DEPT_COLORS = {
@@ -142,7 +142,7 @@ function renderGeographic() {
       deptSorted.map(d => DEPT_COLORS[d[0]] || C.accent)
     )], {
       ...pieLayout(320),
-      annotations: [{ text: `<b>${fmt(totalVictims)}</b><br><span style="font-size:10px">Total</span>`, x: 0.5, y: 0.5, showarrow: false, font: { color: C.text, size: 13 } }]
+      annotations: [{ text: `<b>${fmt((q.killed || 0) + (q.injured || 0))}</b><br><span style="font-size:10px">Total</span>`, x: 0.5, y: 0.5, showarrow: false, font: { color: C.text, size: 13 } }]
     });
   }
 

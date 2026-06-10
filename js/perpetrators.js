@@ -2,6 +2,7 @@
 function renderPerpetrators() {
   const q      = cur();
   const total  = q.total || 0;
+  const killedInjured = (q.killed || 0) + (q.injured || 0);
   const perpQ  = q.by_perpetrator || {};
   const byPerp = D.by_perpetrator || {};
   const fr = getLang() === 'fr';
@@ -9,15 +10,15 @@ function renderPerpetrators() {
   const vLabels = fr ? ['Tués','Blessés','Enlevés'] : ['Killed','Injured','Abducted'];
 
   // KPIs
-  setKpi('kpi-total',      total);
+  setKpi('kpi-total',      killedInjured);
   setKpi('kpi-gangs',      perpQ['Gangs']            || 0);
   setKpi('kpi-pnh',        perpQ['PNH / HNP']        || 0);
   setKpi('kpi-popjustice', perpQ['Population Justice']|| 0);
 
-  const pctSub = (id, v) => { const e=document.getElementById(id); if(e) e.textContent=`${pctN(v,total)}% ${fr ? 'des victimes T1' : 'of total Q1 victims'}`; };
-  pctSub('kpi-gangs-pct',      perpQ['Gangs']            || 0);
-  pctSub('kpi-pnh-pct',        perpQ['PNH / HNP']        || 0);
-  pctSub('kpi-popjustice-pct', perpQ['Population Justice']|| 0);
+  const setSub = (id, text) => { const e = document.getElementById(id); if (e) e.textContent = text; };
+  setSub('kpi-gangs-pct',      fr ? '27% des tués et blessés'  : '27% of killing and injuries');
+  setSub('kpi-pnh-pct',        fr ? '69% des tués et blessés'  : '69% of killing and injuries');
+  setSub('kpi-popjustice-pct', fr ? '4% des tués et blessés'   : '4% of killing and injuries');
 
   const activePerps = PERPS.filter(p => p !== 'Unknown' && perpQ[p] > 0);
   if (!activePerps.length) { console.warn('No perpetrator data'); return; }
@@ -29,7 +30,7 @@ function renderPerpetrators() {
     activePerps.map(perpColor)
   )], {
     ...pieLayout(280),
-    annotations:[{text:`<b>${fmt(total)}</b><br><span style="font-size:10px">${fr ? 'Victimes' : 'Victims'}</span>`,x:0.5,y:0.5,showarrow:false,font:{color:C.text,size:13}}]
+    annotations:[{text:`<b>${fmt(killedInjured)}</b><br><span style="font-size:10px">${fr ? 'Victimes' : 'Victims'}</span>`,x:0.5,y:0.5,showarrow:false,font:{color:C.text,size:13}}]
   });
 
   // S2-Card2: Violation by perpetrator grouped
