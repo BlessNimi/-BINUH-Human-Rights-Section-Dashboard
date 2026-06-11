@@ -11,27 +11,31 @@ function renderGender() {
   const gLabels = fr ? ['Hommes','Femmes','Garçons','Filles'] : ['Men','Women','Boys','Girls'];
 
   // S1: KPIs
+  const genderDist   = { male: 2029, female: 286, boys: 24, girls: 24 };
+  const childrenDist = genderDist.boys + genderDist.girls;
   setKpi('kpi-total',    casualties);
-  setKpi('kpi-men',      g.male   || 0);
-  setKpi('kpi-women',    g.female || 0);
-  setKpi('kpi-boys',     g.boys   || 0);
-  setKpi('kpi-girls',    g.girls  || 0);
-  setKpi('kpi-children', children);
+  setKpi('kpi-men',      genderDist.male);
+  setKpi('kpi-women',    genderDist.female);
+  setKpi('kpi-boys',     genderDist.boys);
+  setKpi('kpi-girls',    genderDist.girls);
+  setKpi('kpi-children', childrenDist);
 
   const pctSub = (id, v, w) => { const e=document.getElementById(id); if(e) e.textContent=`${pctN(v,w)}% ${fr ? 'de toutes les victimes' : 'of all victims'}`; };
-  pctSub('kpi-men-pct',      g.male,   gTotal);
-  pctSub('kpi-women-pct',    g.female, gTotal);
-  pctSub('kpi-boys-pct',     g.boys,   gTotal);
-  pctSub('kpi-girls-pct',    g.girls,  gTotal);
-  pctSub('kpi-children-pct', children, gTotal);
+  pctSub('kpi-men-pct',      genderDist.male,   casualties);
+  pctSub('kpi-women-pct',    genderDist.female, casualties);
+  pctSub('kpi-boys-pct',     genderDist.boys,   casualties);
+  pctSub('kpi-girls-pct',    genderDist.girls,  casualties);
+  pctSub('kpi-children-pct', childrenDist,      casualties);
 
   // S2: Gender distribution charts
   const vByG    = q.by_violation_gender || {};
   const gColors = [C.male, C.female, C.boys, C.girls];
 
-  plotChart('chart-gender-donut', [donutTrace(gLabels, [g.male||0,g.female||0,g.boys||0,g.girls||0], gColors)], {
+  const genderDonutVals  = [genderDist.male, genderDist.female, genderDist.boys, genderDist.girls];
+  const genderDonutTotal = genderDonutVals.reduce((a,b)=>a+b,0);
+  plotChart('chart-gender-donut', [donutTrace(gLabels, genderDonutVals, gColors)], {
     ...pieLayout(300),
-    annotations:[{text:`<b>${fmt(gTotal)}</b><br><span style="font-size:10px">${fr ? 'Victimes' : 'Victims'}</span>`,x:0.5,y:0.5,showarrow:false,font:{color:C.text,size:13}}]
+    annotations:[{text:`<b>${fmt(genderDonutTotal)}</b><br><span style="font-size:10px">${fr ? 'Victimes' : 'Victims'}</span>`,x:0.5,y:0.5,showarrow:false,font:{color:C.text,size:13}}]
   });
 
   const vKeys  = VIOL_KEYS;

@@ -10,15 +10,20 @@ function renderPerpetrators() {
   const vLabels = fr ? ['Tués','Blessés','Enlevés'] : ['Killed','Injured','Abducted'];
 
   // KPIs
+  const perpVals = { 'Gangs': 653, 'PNH / HNP': 1645, 'Population Justice': 89 };
   setKpi('kpi-total',      killedInjured);
-  setKpi('kpi-gangs',      perpQ['Gangs']            || 0);
-  setKpi('kpi-pnh',        perpQ['PNH / HNP']        || 0);
-  setKpi('kpi-popjustice', perpQ['Population Justice']|| 0);
+  setKpi('kpi-gangs',      perpVals['Gangs']);
+  setKpi('kpi-pnh',        perpVals['PNH / HNP']);
+  setKpi('kpi-popjustice', perpVals['Population Justice']);
 
   const setSub = (id, text) => { const e = document.getElementById(id); if (e) e.textContent = text; };
   setSub('kpi-gangs-pct',      fr ? '27% des tués et blessés'  : '27% of killing and injuries');
-  setSub('kpi-pnh-pct',        fr ? '69% des tués et blessés'  : '69% of killing and injuries');
   setSub('kpi-popjustice-pct', fr ? '4% des tués et blessés'   : '4% of killing and injuries');
+
+  const pnhPctEl = document.getElementById('kpi-pnh-pct');
+  if (pnhPctEl) pnhPctEl.innerHTML = fr
+    ? '69% des tués et blessés<br><span style="font-size:0.85em;opacity:0.75">Lors d\'opérations des forces de sécurité contre des gangs</span>'
+    : '69% of killing and injuries<br><span style="font-size:0.85em;opacity:0.75">During security forces operations against gangs</span>';
 
   const activePerps = PERPS.filter(p => p !== 'Unknown' && perpQ[p] > 0);
   if (!activePerps.length) { console.warn('No perpetrator data'); return; }
@@ -26,7 +31,7 @@ function renderPerpetrators() {
   // S2-Card1: Perpetrator donut
   plotChart('chart-perp-donut', [donutTrace(
     activePerps.map(lblPerp),
-    activePerps.map(p => perpQ[p]),
+    activePerps.map(p => perpVals[p] || 0),
     activePerps.map(perpColor)
   )], {
     ...pieLayout(280),

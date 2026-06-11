@@ -36,9 +36,9 @@ function renderOverview() {
   // S2-Card1: Violation donut
   const annoTotal = `<b>${fmt(casualties)}</b><br><span style="font-size:10px">${fr ? 'Victimes' : 'Casualties'}</span>`;
   plotChart('chart-violation-donut', [donutTrace(
-    fr ? ['Tués', 'Blessés', 'Enlevés'] : ['Killed', 'Injured', 'Abducted'],
-    [q.killed, q.injured, q.abducted],
-    [C.killed, C.injured, C.abducted]
+    fr ? ['Tués', 'Blessés'] : ['Killed', 'Injured'],
+    [q.killed, q.injured],
+    [C.killed, C.injured]
   )], {
     ...pieLayout(280),
     annotations: [{ text: annoTotal, x:0.5, y:0.5, showarrow:false, font:{color:C.text,size:13} }]
@@ -81,13 +81,15 @@ function renderOverview() {
   // S2-Card3: Gender donut
   const g = q.gender || {};
   const gTotal = (g.male||0)+(g.female||0)+(g.boys||0)+(g.girls||0);
+  const genderDonutVals  = [2029, 286, 24, 24];
+  const genderDonutTotal = genderDonutVals.reduce((a,b)=>a+b,0);
   plotChart('chart-gender-donut', [donutTrace(
     fr ? ['Hommes','Femmes','Garçons','Filles'] : ['Men','Women','Boys','Girls'],
-    [g.male||0, g.female||0, g.boys||0, g.girls||0],
+    genderDonutVals,
     [C.male, C.female, C.boys, C.girls]
   )], {
     ...pieLayout(280),
-    annotations: [{ text:`<b>${fmt(gTotal)}</b><br><span style="font-size:10px">${fr ? 'Total' : 'Total'}</span>`, x:0.5, y:0.5, showarrow:false, font:{color:C.text,size:13} }]
+    annotations: [{ text:`<b>${fmt(genderDonutTotal)}</b><br><span style="font-size:10px">${fr ? 'Total' : 'Total'}</span>`, x:0.5, y:0.5, showarrow:false, font:{color:C.text,size:13} }]
   });
 
   // S3-Card1: MARA quarterly trend grouped bar
