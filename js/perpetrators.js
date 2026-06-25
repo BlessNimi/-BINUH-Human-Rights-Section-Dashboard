@@ -10,11 +10,11 @@ function renderPerpetrators() {
   const vLabels = fr ? ['Tués','Blessés','Enlevés'] : ['Killed','Injured','Abducted'];
 
   // KPIs
-  const perpVals = { 'Gangs': 653, 'PNH / HNP': 1645, 'Population Justice': 89 };
+  const perpVals = { 'Gangs': 653, 'PNH / HNP': 1645, 'Popular justice': 89 };
   setKpi('kpi-total',      killedInjured);
   setKpi('kpi-gangs',      perpVals['Gangs']);
   setKpi('kpi-pnh',        perpVals['PNH / HNP']);
-  setKpi('kpi-popjustice', perpVals['Population Justice']);
+  setKpi('kpi-popjustice', perpVals['Popular justice']);
 
   const setSub = (id, text) => { const e = document.getElementById(id); if (e) e.textContent = text; };
   setSub('kpi-gangs-pct',      fr ? '27% des tués et blessés'  : '27% of killing and injuries');
@@ -42,11 +42,10 @@ function renderPerpetrators() {
   plotChart('chart-perp-violation', [
     { name:vLabels[0], type:'bar', x:activePerps.map(lblPerp), y:activePerps.map(p=>byPerp[p]?.killed  ||0), marker:{color:C.killed}   },
     { name:vLabels[1], type:'bar', x:activePerps.map(lblPerp), y:activePerps.map(p=>byPerp[p]?.injured ||0), marker:{color:C.injured}  },
-    { name:vLabels[2], type:'bar', x:activePerps.map(lblPerp), y:activePerps.map(p=>byPerp[p]?.abducted||0), marker:{color:C.abducted} },
   ], { ...baseLayout(), barmode:'group', height:280, xaxis:{tickangle:-15} });
 
   // S3: Most Affected Communes per Perpetrator Group
-  const PERP_CHART_IDS = { 'Gangs':'chart-commune-gangs', 'PNH / HNP':'chart-commune-sf', 'Population Justice':'chart-commune-popjustice' };
+  const PERP_CHART_IDS = { 'Gangs':'chart-commune-gangs', 'PNH / HNP':'chart-commune-sf', 'Popular justice':'chart-commune-popjustice' };
   activePerps.forEach(p => {
     const chartId = PERP_CHART_IDS[p];
     if (!chartId) return;
@@ -66,36 +65,20 @@ function renderPerpetrators() {
   });
 
   // S6: Insights
-  const gangVics = perpQ['Gangs']     || 0;
-  const sfVics   = perpQ['PNH / HNP'] || 0;
-  const popVics  = perpQ['Population Justice'] || 0;
   const leftEl   = document.getElementById('insights-left');
   const rightEl  = document.getElementById('insights-right');
-  const topPerp  = [...activePerps].sort((a,b)=>(perpQ[b]||0)-(perpQ[a]||0))[0];
 
   if (leftEl) leftEl.innerHTML = (fr ? [
-    `<b>${lblPerp(topPerp)}</b> est présumé responsable du plus grand nombre de victimes au T1 2026 : <b>${fmt(perpQ[topPerp]||0)}</b> (${pctN(perpQ[topPerp]||0,total)}% du total).`,
-    `Les Forces de sécurité : <b>${fmt(sfVics)}</b> victimes (${pctN(sfVics,total)}%) — les tués attribués aux forces de sécurité constituent une préoccupation majeure en matière de responsabilité.`,
-    `Les Gangs : <b>${fmt(gangVics)}</b> victimes (${pctN(gangVics,total)}%) — principalement concentrés dans les communes de Port-au-Prince et environs.`,
-    `La Justice populaire représente <b>${fmt(popVics)}</b> victimes (${pctN(popVics,total)}%) au T1 2026.`,
+    `1 645 victimes (69% du total) ont été tuées ou blessées lors d'opérations de sécurité contre des gangs menées par la Police Nationale d'Haïti, parfois soutenue par la Force de Suppression des Gangs (GSF) et une société de sécurité privée ; et lors d'exécutions sommaires impliquant du personnel de police.`,
+    `653 victimes (27% du total) lors d'attaques perpétrées par des gangs, concentrées de manière disproportionnée dans des communes de Port-au-Prince et environs.`,
+    `89 victimes (4% du total) lors d'actes de violence perpétrés par des groupes d'autodéfense et des membres non organisés de la population dans le cadre du mouvement de justice populaire connu sous le nom de "Bwa Kalé".`,
   ] : [
-    `<b>${lblPerp(topPerp)}</b> is alleged to be responsible for the most victims in Q1 2026: <b>${fmt(perpQ[topPerp]||0)}</b> (${pctN(perpQ[topPerp]||0,total)}% of total).`,
-    `Security Forces: <b>${fmt(sfVics)}</b> victims (${pctN(sfVics,total)}%) — killings attributed to security forces represent a critical accountability concern.`,
-    `Gangs: <b>${fmt(gangVics)}</b> victims (${pctN(gangVics,total)}%) — disproportionately concentrated in Port-au-Prince and surrounding communes.`,
-    `Population Justice actors account for <b>${fmt(popVics)}</b> victims (${pctN(popVics,total)}%) in Q1 2026.`,
+    `1,645 casualties (69% of total) occurred during security operations against gangs carried out by the Haitian National Police, sometimes supported by the Gang Suppression Force (GSF) and a private security company; and during summary executions involving police personnel.`,
+    `653 victims (27% of total) during attacks carried out by gangs, disproportionately concentrated in Port-au-Prince and surrounding communes.`,
+    `89 victims (4% of total) during violent acts perpetrated by self-defence groups and non-organised members of the population as part of the popular justice movement known as "Bwa Kalé".`,
   ]).map(s=>`<li>${s}</li>`).join('');
 
-  if (rightEl) rightEl.innerHTML = (fr ? [
-    `Responsabilité des Forces de sécurité : <b>${fmt(sfVics)}</b> victimes attribuées au T1 2026 (${pctN(sfVics,total)}% du total) — chaque cas nécessite documentation et suivi.`,
-    `La perpétration par les gangs représente <b>${fmt(gangVics)}</b> victimes — la plus grande part des victimes documentées de violence liée aux gangs en Haïti.`,
-    `Justice populaire : <b>${fmt(popVics)}</b> victimes — reflète des réponses communautaires à l'insécurité pouvant elles-mêmes constituer des violations des droits de l'homme.`,
-    `Pour les violences sexuelles impliquant des acteurs armés, voir la <a href="mara.html" style="color:var(--accent)">page Violence Sexuelle Impliquant des Acteurs Armés</a> — suivies séparément pour éviter le double comptage.`,
-  ] : [
-    `Security Forces accountability: <b>${fmt(sfVics)}</b> victims attributed to security forces in Q1 2026 (${pctN(sfVics,total)}% of total) — each case requires documentation and follow-up.`,
-    `Gang perpetration accounts for <b>${fmt(gangVics)}</b> victims — the largest share of documented casualties from gang-related violence in Haiti.`,
-    `Population Justice actors: <b>${fmt(popVics)}</b> victims — reflecting community-based responses to insecurity that may themselves constitute human rights violations.`,
-    `For sexual violence involving armed actors, see the <a href="mara.html" style="color:var(--accent)">Sexual Violence Involving Armed Actors page</a> — tracked separately to avoid double-counting.`,
-  ]).map(s=>`<li>${s}</li>`).join('');
+  if (rightEl) rightEl.innerHTML = '';
 
   document.querySelectorAll('[data-count]').forEach(el => animateCounter(el, +el.dataset.count));
 }

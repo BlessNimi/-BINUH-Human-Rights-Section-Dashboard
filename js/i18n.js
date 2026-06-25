@@ -42,9 +42,9 @@ const I18N = {
     'page.tag.maps': 'INTERACTIVE MAPS',
     // Disclaimers
     'disclaimer': 'Documented civilian casualties in Haiti. Data are non-exhaustive and subject to under-reporting.',
-    'disclaimer.overview': 'Comprehensive analysis of conflict-related casualties documented by BINUH Human Rights Division in Haiti. Data are non-exhaustive and subject to under-reporting.',
+    'disclaimer.overview': 'Comprehensive analysis of conflict-related casualties documented by BINUH Human Rights Service in Haiti. Data are non-exhaustive and subject to under-reporting.',
     'disclaimer.gender': 'Breakdown of Q1 2026 victims of gang-related violence by gender and sex across all violation types, communes, and perpetrator groups.',
-    'disclaimer.perpetrators': 'Analysis of casualties by alleged perpetrator: Gangs, Security Forces, and Population Justice actors. Sexual violence involving armed actors is tracked separately on the Sexual Violence Involving Armed Actors page.',
+    'disclaimer.perpetrators': 'Analysis of casualties by alleged perpetrator: Gangs, Security Forces, and Popular justice actors. Sexual violence involving armed actors is tracked separately on the Sexual Violence Involving Armed Actors page.',
     'disclaimer.geographic': 'Commune-level and department-level breakdown of Q1 2026 gang-related violence casualties in Haiti. Identifies the most affected localities for targeted response and monitoring.',
     'disclaimer.mara': 'Sexual violence involving armed actors is tracked separately from main casualty data to avoid double-counting. Cases cover rape and collective rape perpetrated by gang members, Security Forces, self-defence groups, and unknown actors. Data are non-exhaustive and subject to significant under-reporting.',
     'disclaimer.map': 'Circle size reflects victim count at each location. Data are non-exhaustive.',
@@ -54,11 +54,11 @@ const I18N = {
     'meta.coverage.label': 'Coverage:',
     'meta.coverage.all': 'All Departments, 40+ Communes',
     'meta.source.label': 'Source:',
-    'meta.source.binuh': 'BINUH HRD Incident Database',
+    'meta.source.binuh': 'BINUH HRD HRS Incident Database',
     'meta.categories.label': 'Categories:',
     'meta.categories.gender': 'Men · Women · Boys · Girls',
     'meta.groups.label': 'Groups:',
-    'meta.groups.perp': 'Gangs · Security Forces · Population Justice',
+    'meta.groups.perp': 'Gangs · Security Forces · Popular justice',
     'meta.types.label': 'Types:',
     'meta.types.mara': 'Rape · Collective Rape',
     'meta.perp.label': 'Perpetrators:',
@@ -92,7 +92,7 @@ const I18N = {
     'kpi.sub.killed_injured_abducted': 'Killed · Injured · Abducted',
     'kpi.label.gangs': 'Gangs',
     'kpi.label.security_forces': 'Security Forces',
-    'kpi.label.pop_justice': 'Population Justice',
+    'kpi.label.pop_justice': 'Popular justice',
     'kpi.label.unknown': 'Unknown',
     'kpi.label.mara_total': 'Total Victims (Sexual Violence)',
     'kpi.sub.rape_collective': 'Rape + Collective Rape',
@@ -292,7 +292,7 @@ const I18N = {
     'map.perp.all': 'All Groups',
     'map.perp.gangs': 'Gangs',
     'map.perp.pnh': 'Security Forces',
-    'map.perp.popjustice': 'Population Justice',
+    'map.perp.popjustice': 'Popular justice',
     'map.perp.unknown': 'Unknown',
     'map.popup.victims': 'victims',
     'map.legend.title': 'LEGEND',
@@ -337,7 +337,7 @@ const I18N = {
     'age.elderly': 'Elderly (60+)',
     'perp.gangs': 'Gangs',
     'perp.pnh': 'Security Forces',
-    'perp.popjustice': 'Population Justice',
+    'perp.popjustice': 'Popular justice',
     'perp.selfdefence': 'Self-Defence Group',
     'perp.unknown': 'Unknown',
     'series.victims': 'Victims',
@@ -396,7 +396,7 @@ const I18N = {
     'page.tag.maps': 'CARTES INTERACTIVES',
     // Disclaimers
     'disclaimer': 'Victimes civiles documentées en Haïti (Rapport 6.0). Les données ne sont pas exhaustives et souffrent de sous-déclaration.',
-    'disclaimer.overview': 'Analyse complète des victimes de conflits documentées par la Division des droits de l\'homme du BINUH en Haïti. Les données ne sont pas exhaustives et souffrent de sous-déclaration.',
+    'disclaimer.overview': 'Analyse complète des victimes de conflits documentées par le Service des droits de l\'homme du BINUH en Haïti. Les données ne sont pas exhaustives et souffrent de sous-déclaration.',
     'disclaimer.gender': 'Répartition des victimes du T1 2026 de la violence liée aux gangs par genre et sexe, toutes violations, communes et groupes d\'auteurs confondus.',
     'disclaimer.perpetrators': 'Analyse des victimes par auteur présumé : Gangs, Forces de sécurité, et Justice populaire. La violence sexuelle impliquant des acteurs armés est suivie séparément sur la page Violence sexuelle impliquant des acteurs armés.',
     'disclaimer.geographic': 'Répartition des victimes du T1 2026 au niveau des communes et des départements en Haïti. Identifie les localités les plus touchées pour une réponse ciblée et un suivi.',
@@ -812,7 +812,7 @@ function lblPerp(name) {
   if (!name) return t('perp.unknown');
   if (name === 'Gangs') return t('perp.gangs');
   if (name === 'PNH / HNP') return t('perp.pnh');
-  if (name === 'Population Justice') return t('perp.popjustice');
+  if (name === 'Popular justice') return t('perp.popjustice');
   if (name === 'Self-Defence Group') return t('perp.selfdefence');
   if (name === 'Unknown') return t('perp.unknown');
   return name;

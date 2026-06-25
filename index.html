@@ -38,15 +38,14 @@
     <div class="container page-header-inner">
       <div class="page-tag" id="page-period">Q1 2026</div>
       <h1 class="page-title">Gang-related Violence in Haiti — <span>Overview</span></h1>
-      <p class="page-disclaimer" data-i18n="disclaimer.overview">Comprehensive analysis of conflict-related casualties
-        documented by BINUH Human Rights Division in Haiti. Data are non-exhaustive and subject to under-reporting.</p>
+      <p class="page-disclaimer" data-i18n="disclaimer.overview">Comprehensive analysis of conflict-related casualties documented by BINUH Human Rights Service in Haiti. Data are non-exhaustive and subject to under-reporting.</p>
       <div class="page-meta">
         <div class="meta-item">📅 <strong data-i18n="meta.period.label">Period:</strong> <span
             data-i18n="meta.period.q1_2026">January – March 2026</span></div>
         <div class="meta-item">🗺️ <strong data-i18n="meta.coverage.label">Coverage:</strong> <span
             data-i18n="meta.coverage.all">All Departments, 40+ Communes</span></div>
         <div class="meta-item">📋 <strong data-i18n="meta.source.label">Source:</strong> <span
-            data-i18n="meta.source.binuh">BINUH HRD Incident Database</span></div>
+            data-i18n="meta.source.binuh">BINUH HRD HRS Incident Database</span></div>
       </div>
     </div>
   </div>
@@ -66,13 +65,11 @@
             <div class="kpi-sub" data-i18n="kpi.sub.killed_injured">Killed · Injured</div>
           </div>
           <div class="kpi-card killed">
-            <span class="kpi-icon kpi-icon-box">□</span>
             <div class="kpi-label" data-i18n="kpi.killed">Killed</div>
             <div class="kpi-value" id="kpi-killed" data-count="0">0</div>
             <div class="kpi-sub" id="kpi-killed-pct">of total</div>
           </div>
           <div class="kpi-card injured">
-            <span class="kpi-icon kpi-icon-box">□</span>
             <div class="kpi-label" data-i18n="kpi.injured">Injured</div>
             <div class="kpi-value" id="kpi-injured" data-count="0">0</div>
             <div class="kpi-sub" id="kpi-injured-pct">of total</div>
@@ -81,7 +78,7 @@
             <span class="kpi-icon">⛓️</span>
             <div class="kpi-label" data-i18n="kpi.abducted">Abducted</div>
             <div class="kpi-value" id="kpi-abducted" data-count="0">0</div>
-            <div class="kpi-sub" id="kpi-abducted-pct">of total</div>
+            <div class="kpi-sub" id="kpi-abducted-pct"></div>
           </div>
           <div class="kpi-card sgbv">
             <span class="kpi-icon">🔴</span>
@@ -107,7 +104,7 @@
       <section class="section">
         <h2 class="section-title"><span class="section-icon" style="background:rgba(244,63,94,0.15)">📈</span><span
             data-i18n="s.overview.breakdown">Q1 2026 Casualty Breakdown</span></h2>
-        <div class="grid grid-3">
+        <div class="grid grid-2">
           <!-- Card 1: Violation donut -->
           <div class="chart-wrap">
             <div class="chart-header">
@@ -120,31 +117,7 @@
             </div>
             <div id="chart-violation-donut" class="plotly-chart" style="min-height:280px"></div>
           </div>
-          <!-- Card 2: % bars + QoQ -->
-          <div class="chart-wrap">
-            <div class="chart-header">
-              <div class="chart-title">Incidence Distribution</div>
-            </div>
-            <p class="chart-explain" data-i18n="cx.pct_bars">Share of each violation type among all Q1 2026 documented
-              victims.</p>
-            <div id="pct-bars"></div>
-            <div style="margin-top:20px">
-              <div class="card-title" style="font-size:11px;margin-bottom:10px" data-i18n="ct.mara_qoq">MARA — Quarterly
-                Trend</div>
-              <table class="data-table" id="mara-qoq-table">
-                <thead>
-                  <tr>
-                    <th data-i18n="table.period">Period</th>
-                    <th style="text-align:right" data-i18n="table.total">Total</th>
-                    <th style="text-align:right" data-i18n="kpi.label.rape">Rape</th>
-                    <th style="text-align:right" data-i18n="th.coll_rape">Coll. Rape</th>
-                  </tr>
-                </thead>
-                <tbody id="mara-qoq-body"></tbody>
-              </table>
-            </div>
-          </div>
-          <!-- Card 3: Gender donut -->
+          <!-- Card 2: Gender donut -->
           <div class="chart-wrap">
             <div class="chart-header">
               <div>

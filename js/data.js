@@ -6,7 +6,7 @@ const BINUH_DATA = {
     "primary_year": 2026,
     "primary_quarter": "Q1",
     "period_label": "Q1 2026 - January - March",
-    "source": "BINUH Human Rights - Incident Database (Report 6.0)",
+    "source": "BINUH HRD HRS Incident Database",
     "generated_at": "2026-05-23T16:14:09"
   },
   "current": {
@@ -16,10 +16,10 @@ const BINUH_DATA = {
     "injured": 745,
     "abducted": 57,
     "gender": {
-      "male": 1999,
-      "female": 357,
-      "boys": 34,
-      "girls": 33
+      "male": 1980,
+      "female": 346,
+      "boys": 31,
+      "girls": 30
     },
     "by_age": {
       "minor": 67,
@@ -27,20 +27,20 @@ const BINUH_DATA = {
       "elderly": 6
     },
     "by_perpetrator": {
-      "Gangs": 710,
-      "PNH / HNP": 972,
-      "Population Justice": 27,
-      "Unknown": 735
+      "Gangs": 653,
+      "PNH / HNP": 1645,
+      "Popular justice": 89,
+      "Unknown": 0
     },
     "by_violation_gender": {
       "killed": {
-        "male": 1426,
-        "female": 169,
+        "male": 1440,
+        "female": 172,
         "boys": 15,
         "girls": 15
       },
       "injured": {
-        "male": 536,
+        "male": 540,
         "female": 174,
         "boys": 16,
         "girls": 15
@@ -87,7 +87,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 174,
         "PNH / HNP": 512,
-        "Population Justice": 14,
+        "Popular justice": 14,
         "Unknown": 429
       },
       "by_violation_gender": {
@@ -131,7 +131,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 137,
         "PNH / HNP": 205,
-        "Population Justice": 8,
+        "Popular justice": 8,
         "Unknown": 137
       },
       "by_violation_gender": {
@@ -175,7 +175,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 399,
         "PNH / HNP": 255,
-        "Population Justice": 5,
+        "Popular justice": 5,
         "Unknown": 169
       },
       "by_violation_gender": {
@@ -342,7 +342,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -467,7 +467,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 89,
         "PNH / HNP": 78,
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -553,7 +553,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 49,
         "PNH / HNP": 98,
-        "Population Justice": 4,
+        "Popular justice": 4,
         "Unknown": 28
       },
       "by_violation_gender": {
@@ -723,7 +723,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 47,
         "PNH / HNP": 12,
-        "Population Justice": 3,
+        "Popular justice": 3,
         "Unknown": 5
       },
       "by_violation_gender": {
@@ -806,7 +806,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -847,7 +847,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -890,7 +890,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 32,
         "PNH / HNP": 26,
-        "Population Justice": 1,
+        "Popular justice": 1,
         "Unknown": 11
       },
       "by_violation_gender": {
@@ -1017,7 +1017,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 19,
         "PNH / HNP": 16,
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -1058,7 +1058,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -1100,7 +1100,7 @@ const BINUH_DATA = {
       },
       "by_perpetrator": {
         "PNH / HNP": 4,
-        "Population Justice": 8,
+        "Popular justice": 8,
         "Unknown": 3
       },
       "by_violation_gender": {
@@ -1269,7 +1269,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -1439,7 +1439,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 7,
         "PNH / HNP": 1,
-        "Population Justice": 1,
+        "Popular justice": 1,
         "Unknown": 3
       },
       "by_violation_gender": {
@@ -1524,7 +1524,7 @@ const BINUH_DATA = {
       "by_perpetrator": {
         "Gangs": 23,
         "PNH / HNP": 26,
-        "Population Justice": 1,
+        "Popular justice": 1,
         "Unknown": 3
       },
       "by_violation_gender": {
@@ -1607,7 +1607,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -1649,7 +1649,7 @@ const BINUH_DATA = {
       },
       "by_perpetrator": {
         "PNH / HNP": 1,
-        "Population Justice": 1
+        "Popular justice": 1
       },
       "by_violation_gender": {
         "killed": {
@@ -1675,11 +1675,11 @@ const BINUH_DATA = {
   },
   "by_perpetrator": {
     "Gangs": {
-      "total": 710,
+      "total": 653,
       "incidents": 262,
       "killed": 377,
       "injured": 276,
-      "abducted": 57,
+      "abducted": 0,
       "gender": {
         "male": 501,
         "female": 165,
@@ -1692,7 +1692,7 @@ const BINUH_DATA = {
         "elderly": 4
       },
       "by_perpetrator": {
-        "Gangs": 710
+        "Gangs": 653
       },
       "by_violation_gender": {
         "killed": {
@@ -1716,10 +1716,10 @@ const BINUH_DATA = {
       }
     },
     "PNH / HNP": {
-      "total": 972,
+      "total": 1645,
       "incidents": 224,
-      "killed": 661,
-      "injured": 311,
+      "killed": 1119,
+      "injured": 526,
       "abducted": 0,
       "gender": {
         "male": 798,
@@ -1733,7 +1733,7 @@ const BINUH_DATA = {
         "elderly": 2
       },
       "by_perpetrator": {
-        "PNH / HNP": 972
+        "PNH / HNP": 1645
       },
       "by_violation_gender": {
         "killed": {
@@ -1756,11 +1756,11 @@ const BINUH_DATA = {
         }
       }
     },
-    "Population Justice": {
-      "total": 27,
+    "Popular justice": {
+      "total": 89,
       "incidents": 23,
-      "killed": 25,
-      "injured": 2,
+      "killed": 82,
+      "injured": 7,
       "abducted": 0,
       "gender": {
         "male": 23,
@@ -1774,7 +1774,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Population Justice": 27
+        "Popular justice": 89
       },
       "by_violation_gender": {
         "killed": {
@@ -1798,10 +1798,10 @@ const BINUH_DATA = {
       }
     },
     "Unknown": {
-      "total": 735,
-      "incidents": 131,
-      "killed": 579,
-      "injured": 156,
+      "total": 0,
+      "incidents": 0,
+      "killed": 0,
+      "injured": 0,
       "abducted": 0,
       "gender": {
         "male": 677,
@@ -1815,7 +1815,7 @@ const BINUH_DATA = {
         "elderly": 0
       },
       "by_perpetrator": {
-        "Unknown": 735
+        "Unknown": 0
       },
       "by_violation_gender": {
         "killed": {
@@ -1873,7 +1873,7 @@ const BINUH_DATA = {
       "lon": -72.5800364,
       "commune": "Léogâne",
       "violation": "injured",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 2,
       "incidents": 1,
       "year": 2026,
@@ -1915,7 +1915,7 @@ const BINUH_DATA = {
       "lon": -72.5800364,
       "commune": "Léogâne",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 6,
       "incidents": 6,
       "year": 2026,
@@ -2004,7 +2004,7 @@ const BINUH_DATA = {
       "lon": -72.2862809,
       "commune": "Kenscoff",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -2076,7 +2076,7 @@ const BINUH_DATA = {
       "lon": -72.3157059,
       "commune": "Pétion-Ville",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -2211,7 +2211,7 @@ const BINUH_DATA = {
       "lon": -72.4766886,
       "commune": "Gressier",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 3,
       "incidents": 2,
       "year": 2026,
@@ -2444,7 +2444,7 @@ const BINUH_DATA = {
       "lon": -72.3063117,
       "commune": "Delmas",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 4,
       "incidents": 2,
       "year": 2026,
@@ -2536,7 +2536,7 @@ const BINUH_DATA = {
       "lon": -72.3102812,
       "commune": "Cité Soleil",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -2564,7 +2564,7 @@ const BINUH_DATA = {
       "lon": -74.0841105,
       "commune": "Jérémie",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -2844,7 +2844,7 @@ const BINUH_DATA = {
       "lon": -72.6934054,
       "commune": "Saint-Marc",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -2932,7 +2932,7 @@ const BINUH_DATA = {
       "lon": -72.53551313,
       "commune": "Liancourt",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -2946,7 +2946,7 @@ const BINUH_DATA = {
       "lon": -72.0087527,
       "commune": "Hinche",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3240,7 +3240,7 @@ const BINUH_DATA = {
       "lon": -71.7513497,
       "commune": "Ouanaminthe",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3254,7 +3254,7 @@ const BINUH_DATA = {
       "lon": -71.9545265,
       "commune": "Terrier Rouge",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3282,7 +3282,7 @@ const BINUH_DATA = {
       "lon": -72.0042612,
       "commune": "Trou du Nord",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3367,7 +3367,7 @@ const BINUH_DATA = {
       "lon": -72.1135829,
       "commune": "Limonade",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3381,7 +3381,7 @@ const BINUH_DATA = {
       "lon": -72.2450163,
       "commune": "Cap-Haïtien",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3425,7 +3425,7 @@ const BINUH_DATA = {
       "lon": -72.5800364,
       "commune": "Léogâne",
       "violation": "injured",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 2,
       "incidents": 1,
       "year": 2026,
@@ -3467,7 +3467,7 @@ const BINUH_DATA = {
       "lon": -72.5800364,
       "commune": "Léogâne",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 6,
       "incidents": 6,
       "year": 2026,
@@ -3556,7 +3556,7 @@ const BINUH_DATA = {
       "lon": -72.2862809,
       "commune": "Kenscoff",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3628,7 +3628,7 @@ const BINUH_DATA = {
       "lon": -72.3157059,
       "commune": "Pétion-Ville",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -3763,7 +3763,7 @@ const BINUH_DATA = {
       "lon": -72.4766886,
       "commune": "Gressier",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 3,
       "incidents": 2,
       "year": 2026,
@@ -3996,7 +3996,7 @@ const BINUH_DATA = {
       "lon": -72.3063117,
       "commune": "Delmas",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 4,
       "incidents": 2,
       "year": 2026,
@@ -4088,7 +4088,7 @@ const BINUH_DATA = {
       "lon": -72.3102812,
       "commune": "Cité Soleil",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4116,7 +4116,7 @@ const BINUH_DATA = {
       "lon": -74.0841105,
       "commune": "Jérémie",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4396,7 +4396,7 @@ const BINUH_DATA = {
       "lon": -72.6934054,
       "commune": "Saint-Marc",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4484,7 +4484,7 @@ const BINUH_DATA = {
       "lon": -72.53551313,
       "commune": "Liancourt",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4498,7 +4498,7 @@ const BINUH_DATA = {
       "lon": -72.0087527,
       "commune": "Hinche",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4792,7 +4792,7 @@ const BINUH_DATA = {
       "lon": -71.7513497,
       "commune": "Ouanaminthe",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4806,7 +4806,7 @@ const BINUH_DATA = {
       "lon": -71.9545265,
       "commune": "Terrier Rouge",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4834,7 +4834,7 @@ const BINUH_DATA = {
       "lon": -72.0042612,
       "commune": "Trou du Nord",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4919,7 +4919,7 @@ const BINUH_DATA = {
       "lon": -72.1135829,
       "commune": "Limonade",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -4933,7 +4933,7 @@ const BINUH_DATA = {
       "lon": -72.2450163,
       "commune": "Cap-Haïtien",
       "violation": "killed",
-      "perpetrator": "Population Justice",
+      "perpetrator": "Popular justice",
       "victims": 1,
       "incidents": 1,
       "year": 2026,
@@ -5084,14 +5084,6 @@ const BINUH_DATA = {
         "total": 292,
         "rape": 50,
         "collective_rape": 242
-      },
-      {
-        "year": 2026,
-        "quarter": "Q2",
-        "label": "Q2 2026",
-        "total": 310,
-        "rape": 43,
-        "collective_rape": 267
       }
     ],
     "monthly": {

@@ -11,7 +11,7 @@ function renderGender() {
   const gLabels = fr ? ['Hommes','Femmes','Garçons','Filles'] : ['Men','Women','Boys','Girls'];
 
   // S1: KPIs
-  const genderDist   = { male: 2029, female: 286, boys: 24, girls: 24 };
+  const genderDist   = { male: 1980, female: 346, boys: 31, girls: 30 };
   const childrenDist = genderDist.boys + genderDist.girls;
   setKpi('kpi-total',    casualties);
   setKpi('kpi-men',      genderDist.male);
@@ -96,27 +96,27 @@ function renderGender() {
   const rightEl = document.getElementById('insights-right');
 
   if (leftEl) leftEl.innerHTML = (fr ? [
-    `<b>${fmt(casualties)}</b> victimes totales (tués et blessés) de violence liée aux gangs au T1 2026, dont <b>${pctN(g.male,gTotal)}%</b> sont des hommes.`,
-    `Les femmes représentent ${pctN(g.female,gTotal)}% (${fmt(g.female||0)}), les garçons ${pctN(g.boys,gTotal)}% (${fmt(g.boys||0)}), les filles ${pctN(g.girls,gTotal)}% (${fmt(g.girls||0)}) des victimes totales.`,
-    `<b>${fmt(q.abducted||0)}</b> victimes ont été enlevées au T1 2026 — ${topCommune ? `<b>${topCommune[0]}</b> est la commune la plus touchée avec ${fmt(topCommune[1].abducted||0)} enlèvements.` : ''}`,
-    `<b>${fmt(children)}</b> enfants (garçons et filles) documentés comme victimes de violence liée aux gangs au T1 2026.`,
+    `<b>${fmt(casualties)}</b> victimes totales (tués et blessés) de violence liée aux gangs au T1 2026, dont <b>83%</b> sont des hommes.`,
+    `Les femmes représentent 14% (<b>${fmt(genderDist.female)}</b>), les garçons 1% (<b>${fmt(genderDist.boys)}</b>), les filles 1% (<b>${fmt(genderDist.girls)}</b>) des victimes totales.`,
+    `<b>${fmt(q.abducted||0)}</b> victimes ont été enlevées au T1 2026 — ${top.length ? `<b>${top[0][0]}</b> est la commune la plus touchée avec ${fmt(top[0][1].abducted||0)} enlèvements.` : ''}`,
+    `<b>${fmt(childrenDist)}</b> enfants (garçons et filles) documentés comme victimes de violence liée aux gangs au T1 2026.`,
   ] : [
-    `<b>${fmt(casualties)}</b> total casualties (killed and injured) from gang-related violence in Q1 2026, of which <b>${pctN(g.male,gTotal)}%</b> are men.`,
-    `Women account for ${pctN(g.female,gTotal)}% (${fmt(g.female||0)}), boys ${pctN(g.boys,gTotal)}% (${fmt(g.boys||0)}), girls ${pctN(g.girls,gTotal)}% (${fmt(g.girls||0)}) of total victims.`,
-    `<b>${fmt(q.abducted||0)}</b> victims were abducted in Q1 2026 — ${topCommune ? `<b>${topCommune[0]}</b> is the most affected commune with ${fmt(topCommune[1].abducted||0)} abductions.` : ''}`,
-    `<b>${fmt(children)}</b> children (boys and girls) documented as victims of gang-related violence in Q1 2026.`,
+    `<b>${fmt(casualties)}</b> total casualties (killed and injured) from gang-related violence in Q1 2026, of which <b>83%</b> are men.`,
+    `Women account for 14% (<b>${fmt(genderDist.female)}</b>), boys 1% (<b>${fmt(genderDist.boys)}</b>), girls 1% (<b>${fmt(genderDist.girls)}</b>) of total victims.`,
+    `<b>${fmt(q.abducted||0)}</b> victims were abducted in Q1 2026 — ${top.length ? `<b>${top[0][0]}</b> is the most affected commune with ${fmt(top[0][1].abducted||0)} abductions.` : ''}`,
+    `<b>${fmt(childrenDist)}</b> children (boys and girls) documented as victims of gang-related violence in Q1 2026.`,
   ]).map(s=>`<li>${s}</li>`).join('');
 
   if (rightEl) rightEl.innerHTML = (fr ? [
-    `Violence sexuelle impliquant des acteurs armés : <b>${fmt(maraFemale)}</b> sur ${fmt(maraTotal)} victimes documentées sont des femmes (${pctN(maraFemale,maraTotal||1)}%).`,
+    `Violence sexuelle impliquant des acteurs armés : <b>${fmt(maraFemale)}</b> sur ${fmt(maraTotal)} victimes documentées sont des femmes (99,6%).`,
     `Le viol collectif représente <b>${pctN(maraCollR,maraTotal||1)}%</b> de tous les cas de violence sexuelle impliquant des acteurs armés au T1 2026 (${fmt(maraCollR)} victimes).`,
     `Parmi les victimes : <b>${fmt(maraMinor)}</b> sont mineurs (0–17 ans) et <b>${fmt(maraAdult)}</b> sont adultes (18–59 ans).`,
-    `Les femmes (${fmt(g.female||0)}) font face à la fois aux blessures de la violence liée aux gangs et à une exposition disproportionnée à la violence sexuelle — un risque de protection cumulé.`,
+    `Les femmes (<b>${fmt(genderDist.female)}</b>) font face à la fois aux blessures de la violence liée aux gangs et à une exposition disproportionnée à la violence sexuelle — un risque de protection cumulé.`,
   ] : [
-    `Sexual violence involving armed actors: <b>${fmt(maraFemale)}</b> of ${fmt(maraTotal)} documented victims are female (${pctN(maraFemale,maraTotal||1)}%).`,
+    `Sexual violence involving armed actors: <b>${fmt(maraFemale)}</b> of ${fmt(maraTotal)} documented victims are female (99.6%).`,
     `Collective rape accounts for <b>${pctN(maraCollR,maraTotal||1)}%</b> of all Q1 2026 sexual violence involving armed actors cases (${fmt(maraCollR)} victims).`,
     `Among victims: <b>${fmt(maraMinor)}</b> are minors (0–17) and <b>${fmt(maraAdult)}</b> are adults (18–59).`,
-    `Women (${fmt(g.female||0)}) face both gang-related violence injuries and disproportionate sexual violence exposure — a compounded protection risk.`,
+    `Women (<b>${fmt(genderDist.female)}</b>) face both gang-related violence injuries and disproportionate sexual violence exposure — a compounded protection risk.`,
   ]).map(s=>`<li>${s}</li>`).join('');
 
   document.querySelectorAll('[data-count]').forEach(el => animateCounter(el, +el.dataset.count));

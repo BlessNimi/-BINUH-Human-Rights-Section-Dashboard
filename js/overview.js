@@ -20,7 +20,7 @@ function renderOverview() {
   const pctEl = (id, v, w) => { const e = document.getElementById(id); if (e) e.textContent = `${pctN(v,w)}% ${fr ? 'du total' : 'of total'}`; };
   pctEl('kpi-killed-pct',   q.killed,   casualties);
   pctEl('kpi-injured-pct',  q.injured,  casualties);
-  pctEl('kpi-abducted-pct', q.abducted, total);
+  const abductedPctEl = document.getElementById('kpi-abducted-pct'); if (abductedPctEl) abductedPctEl.textContent = '';
 
   // MARA note (generated so it can be translated)
   const noteBody = document.getElementById('mara-note-body');
@@ -81,7 +81,7 @@ function renderOverview() {
   // S2-Card3: Gender donut
   const g = q.gender || {};
   const gTotal = (g.male||0)+(g.female||0)+(g.boys||0)+(g.girls||0);
-  const genderDonutVals  = [2029, 286, 24, 24];
+  const genderDonutVals  = [1980, 346, 31, 30];
   const genderDonutTotal = genderDonutVals.reduce((a,b)=>a+b,0);
   plotChart('chart-gender-donut', [donutTrace(
     fr ? ['Hommes','Femmes','Garçons','Filles'] : ['Men','Women','Boys','Girls'],
@@ -132,27 +132,27 @@ function renderOverview() {
   const rightEl = document.getElementById('insights-right');
 
   if (leftEl) leftEl.innerHTML = (fr ? [
-    `<b>${fmt(casualties)}</b> victimes totales (tués et blessés) de violence liée aux gangs documentées au T1 2026 en Haïti.`,
+    `<b>${fmt(casualties)}</b> victimes totales (tués et blessés) de violence liée aux gangs documentées en Haïti au T1 2026.`,
     `Les tués représentent la forme de violence la plus fréquente : <b>${fmt(q.killed)}</b> tués (${pctN(q.killed,casualties)}% des victimes), suivis de <b>${fmt(q.injured)}</b> blessés. Enlèvements : <b>${fmt(q.abducted)}</b>.`,
-    topCommune ? `<b>${topCommune[0]}</b> est la commune la plus affectée avec <b>${fmt(topCommune[1].total)}</b> victimes — ${pctN(topCommune[1].total,total)}% du total national.` : '',
-    `Les hommes représentent la majorité des victimes (${pctN(g.male,gTotal)}%), tandis que les femmes et les enfants représentent ensemble ${pctN((g.female||0)+(g.boys||0)+(g.girls||0),gTotal)}%.`,
+    topCommune ? `<b>${topCommune[0]}</b> est la commune la plus affectée avec <b>${fmt(topCommune[1].total)}</b> victimes.` : '',
+    `Les hommes représentent 83% des victimes, tandis que les femmes (14%) et les enfants (3%) représentent ensemble 17%.`,
   ] : [
     `<b>${fmt(casualties)}</b> total casualties (killed and injured) from gang-related violence in Haiti documented in Q1 2026.`,
     `Killing is the most prevalent harm: <b>${fmt(q.killed)}</b> killed (${pctN(q.killed,casualties)}% of casualties), followed by <b>${fmt(q.injured)}</b> injured. Abductions: <b>${fmt(q.abducted)}</b>.`,
-    topCommune ? `<b>${topCommune[0]}</b> is the most affected commune with <b>${fmt(topCommune[1].total)}</b> victims — ${pctN(topCommune[1].total,total)}% of the national total.` : '',
-    `Men represent the majority of victims (${pctN(g.male,gTotal)}%), while women and children together account for ${pctN((g.female||0)+(g.boys||0)+(g.girls||0),gTotal)}%.`,
+    topCommune ? `<b>${topCommune[0]}</b> is the most affected commune with <b>${fmt(topCommune[1].total)}</b> victims.` : '',
+    `Men represent 83% of victims, while women (14%) and children (3%) together account for 17%.`,
   ]).filter(Boolean).map(s=>`<li>${s}</li>`).join('');
 
   if (rightEl) rightEl.innerHTML = (fr ? [
-    `<b>${fmt(mc.total||0)}</b> cas de violence sexuelle impliquant des acteurs armés documentés au T1 2026 — <b>${fmt(mc.rape||0)}</b> viols et <b>${fmt(mc.collective_rape||0)}</b> viols collectifs.`,
-    `Les victimes de violence sexuelle impliquant des acteurs armés sont en grande majorité des femmes : <b>${fmt(mc.gender?.female||0)}</b> sur ${fmt(mc.total||0)} cas (${pctN(mc.gender?.female||0,mc.total||1)}%).`,
-    `Les Forces de sécurité sont présumées responsables de <b>${fmt(sfVics)}</b> victimes (${pctN(sfVics,total)}% du total). Les Gangs : <b>${fmt(gangVics)}</b> victimes (${pctN(gangVics,total)}%).`,
-    `Ces données sont suivies séparément des chiffres de victimes principaux pour éviter tout double comptage — voir la <a href="mara.html" style="color:var(--accent)">page Violence sexuelle impliquant des acteurs armés</a> pour une analyse complète.`,
+    `1 645 victimes (69% du total) lors d'opérations de sécurité contre des gangs menées par la Police Nationale d'Haïti, parfois soutenue par la Force de Suppression des Gangs (GSF) et une société de sécurité privée ; et lors d'exécutions sommaires impliquant du personnel de police.`,
+    `653 victimes (27% du total) lors d'attaques perpetrées par des gangs. 89 victimes (4% du total) lors d'actes de violence par des groupes de justice populaire "Bwa Kalé".`,
+    `<b>${fmt(mc.total||0)}</b> cas de violence sexuelle impliquant des acteurs armés documentés au T1 2026 — <b>${fmt(mc.rape||0)}</b> viols et <b>${fmt(mc.collective_rape||0)}</b> viols collectifs. 99,6% des victimes sont des femmes.`,
+    `Ces données sont suivies séparément pour éviter tout double comptage — voir la <a href="mara.html" style="color:var(--accent)">page Violence sexuelle impliquant des acteurs armés</a>.`,
   ] : [
-    `<b>${fmt(mc.total||0)}</b> cases of sexual violence involving armed actors documented in Q1 2026 — <b>${fmt(mc.rape||0)}</b> rape and <b>${fmt(mc.collective_rape||0)}</b> collective rape incidents.`,
-    `Victims of sexual violence involving armed actors are overwhelmingly female: <b>${fmt(mc.gender?.female||0)}</b> of ${fmt(mc.total||0)} cases (${pctN(mc.gender?.female||0,mc.total||1)}%).`,
-    `Security Forces are alleged to be responsible for <b>${fmt(sfVics)}</b> victims (${pctN(sfVics,total)}% of total). Gangs: <b>${fmt(gangVics)}</b> victims (${pctN(gangVics,total)}%).`,
-    `Sexual violence involving armed actors data is tracked separately from main casualty figures to avoid double-counting — see the <a href="mara.html" style="color:var(--accent)">Sexual Violence Involving Armed Actors page</a> for full analysis.`,
+    `1,645 casualties (69% of total) occurred during security operations against gangs carried out by the Haitian National Police, sometimes supported by the Gang Suppression Force (GSF) and a private security company; and during summary executions involving police personnel.`,
+    `653 victims (27% of total) during attacks carried out by gangs. 89 victims (4% of total) during violent acts by popular justice groups ("Bwa Kalé").`,
+    `<b>${fmt(mc.total||0)}</b> cases of sexual violence involving armed actors documented in Q1 2026 — <b>${fmt(mc.rape||0)}</b> rape and <b>${fmt(mc.collective_rape||0)}</b> collective rape incidents. 99.6% of victims are female.`,
+    `Sexual violence involving armed actors data is tracked separately to avoid double-counting — see the <a href="mara.html" style="color:var(--accent)">Sexual Violence Involving Armed Actors page</a>.`,
   ]).map(s=>`<li>${s}</li>`).join('');
 
   // Run counters

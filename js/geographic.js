@@ -54,6 +54,18 @@ const COMMUNE_DEPT = {
   'Jérémie':               'Grand\'Anse',
   'Jeremie':               'Grand\'Anse',
   'Port-de-Paix':          'Nord-Ouest',
+  'Montrouis':             'Artibonite',
+  'Boucan Carré':          'Centre',
+  'Lascahobas':            'Centre',
+  'Maïssade':              'Centre',
+  'Limonade':              'Nord',
+  'Pilate':                'Nord',
+  'Caracol':               'Nord-Est',
+  'Fort-Liberté':          'Nord-Est',
+  'Ouanaminthe':           'Nord-Est',
+  'Terrier Rouge':         'Nord-Est',
+  'Trou du Nord':          'Nord-Est',
+  'Aquin':                 'Sud',
 };
 
 function getDept(commune) {
@@ -64,7 +76,7 @@ function renderGeographic() {
   const q   = cur();
   const top = sortedCommunes(20);
   const all = sortedCommunes(0); // all communes
-  const totalVictims = q.total || 0;
+  const totalVictims = (q.killed || 0) + (q.injured || 0);
   const fr = getLang() === 'fr';
   const vLabels = fr ? ['Tués','Blessés','Enlevés'] : ['Killed','Injured','Abducted'];
 
@@ -86,7 +98,7 @@ function renderGeographic() {
   all.forEach(([c, d]) => {
     const dept = getDept(c);
     if (!deptTotals[dept]) deptTotals[dept] = { total: 0, killed: 0, injured: 0, abducted: 0 };
-    deptTotals[dept].total    += d.total;
+    deptTotals[dept].total    += (d.killed || 0) + (d.injured || 0);
     deptTotals[dept].killed   += d.killed;
     deptTotals[dept].injured  += d.injured;
     deptTotals[dept].abducted += d.abducted;

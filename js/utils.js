@@ -8,11 +8,11 @@ const C = {
 };
 const VIOLATIONS  = ['Killed', 'Injured', 'Abducted'];
 const VIOL_KEYS   = ['killed', 'injured', 'abducted'];
-const PERPS       = ['Gangs', 'PNH / HNP', 'Population Justice'];
+const PERPS       = ['Gangs', 'PNH / HNP', 'Popular justice'];
 const MARA_PERPS  = ['Gangs', 'PNH / HNP', 'Self-Defence Group', 'Unknown'];
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-function dataSource() { return 'Data source: Human Rights Section, BINUH (Report 6.0)'; }
+function dataSource() { return 'Data source: BINUH HRD HRS Incident Database'; }
 
 const baseLayout = (o={}) => ({
   paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',

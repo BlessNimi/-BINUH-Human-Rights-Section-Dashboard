@@ -37,11 +37,10 @@
     <div class="container page-header-inner">
       <div class="page-tag" data-i18n="page.tag.perpetrators">PERPETRATOR GROUP ANALYSIS</div>
       <h1 class="page-title">Perpetrators — <span>Actor Attribution</span></h1>
-      <p class="page-disclaimer">Analysis of casualties by alleged perpetrator: Gangs, Security Forces, and Population Justice actors. Sexual violence involving armed actors is tracked separately on the <a
-          href="mara.html" style="color:var(--accent)">Sexual Violence Involving Armed Actors page</a>.</p>
+      <p class="page-disclaimer">Analysis of casualties by alleged perpetrator: Gangs, Security Forces, and Popular justice actors. Sexual violence involving armed actors is tracked separately on the <a href="mara.html" style="color:var(--accent)">Sexual Violence Involving Armed Actors page</a>.</p>
       <div class="page-meta">
         <div class="meta-item">👥 <strong data-i18n="meta.groups.label">Groups:</strong> <span
-            data-i18n="meta.groups.perp">Gangs · Security Forces · Population Justice</span></div>
+            data-i18n="meta.groups.perp">Gangs · Security Forces · Popular justice</span></div>
         <div class="meta-item">📅 <strong data-i18n="meta.period.label">Period:</strong> <span data-i18n="badge.q1">Q1
             2026</span></div>
       </div>
@@ -77,8 +76,7 @@
           </div>
           <div class="kpi-card" style="border-top:3px solid var(--opportunistic)">
             <span class="kpi-icon">⚖️</span>
-            <div class="kpi-label" style="color:var(--opportunistic)" data-i18n="kpi.label.pop_justice">Population
-              Justice</div>
+            <div class="kpi-label" style="color:var(--opportunistic)" data-i18n="kpi.label.pop_justice">Popular justice</div>
             <div class="kpi-value" id="kpi-popjustice" data-count="0">0</div>
             <div class="kpi-sub" id="kpi-popjustice-pct"></div>
           </div>
@@ -133,8 +131,8 @@
           </div>
           <div class="chart-wrap">
             <div class="chart-header">
-              <div class="chart-title">Population Justice — Top 5 Communes</div>
-              <p class="chart-subtitle">Top 5 communes with the most victims attributed to Population Justice (Q1 2026).</p>
+              <div class="chart-title">Popular justice — Top 5 Communes</div>
+              <p class="chart-subtitle">Top 5 communes with the most victims attributed to Popular justice (Q1 2026).</p>
             </div>
             <div id="chart-commune-popjustice" class="plotly-chart" style="min-height:280px"></div>
           </div>
@@ -145,16 +143,12 @@
       <section class="section">
         <h2 class="section-title"><span class="section-icon" style="background:rgba(0,158,219,0.15)">💡</span><span
             data-i18n="s.perp.insights">Perpetrator Analysis Insights</span></h2>
-        <div class="grid grid-2">
+        <div class="grid grid-1">
           <div class="insight-box">
             <h3 class="insight-heading" data-i18n="insight.h.main_casualties">Main Violence — Casualties</h3>
             <ul class="insight-list" id="insights-left"></ul>
           </div>
-          <div class="insight-box">
-            <h3 class="insight-heading" data-i18n="insight.h.sf_accountability">Security Forces &amp; Accountability
-            </h3>
-            <ul class="insight-list" id="insights-right"></ul>
-          </div>
+          <div id="insights-right" style="display:none"></div>
         </div>
       </section>
 
