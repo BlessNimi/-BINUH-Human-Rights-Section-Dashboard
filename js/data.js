@@ -6,7 +6,7 @@ const BINUH_DATA = {
     "primary_year": 2026,
     "primary_quarter": "Q1",
     "period_label": "Q1 2026 - January - March",
-    "source": "BINUH HRD HRS Incident Database",
+    "source": "BINUH HRS Incident Database",
     "generated_at": "2026-05-23T16:14:09"
   },
   "current": {

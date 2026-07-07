@@ -12,7 +12,7 @@ const PERPS       = ['Gangs', 'PNH / HNP', 'Popular justice'];
 const MARA_PERPS  = ['Gangs', 'PNH / HNP', 'Self-Defence Group', 'Unknown'];
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-function dataSource() { return 'Data source: BINUH HRD HRS Incident Database'; }
+function dataSource() { return 'Data source: BINUH HRS Incident Database'; }
 
 const baseLayout = (o={}) => ({
   paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',

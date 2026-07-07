@@ -132,26 +132,26 @@ function renderOverview() {
   const rightEl = document.getElementById('insights-right');
 
   if (leftEl) leftEl.innerHTML = (fr ? [
-    `<b>${fmt(casualties)}</b> victimes totales (tués et blessés) de violence liée aux gangs documentées en Haïti au T1 2026.`,
-    `Les tués représentent la forme de violence la plus fréquente : <b>${fmt(q.killed)}</b> tués (${pctN(q.killed,casualties)}% des victimes), suivis de <b>${fmt(q.injured)}</b> blessés. Enlèvements : <b>${fmt(q.abducted)}</b>.`,
-    topCommune ? `<b>${topCommune[0]}</b> est la commune la plus affectée avec <b>${fmt(topCommune[1].total)}</b> victimes.` : '',
+    `En T1 2026, un total de ${fmt(casualties)} victimes (tuées et blessées) de violence liée aux gangs ont été documentées en Haïti.`,
+    `Les homicides constituent la forme de violence la plus fréquente, avec ${fmt(q.killed)} tués (${pctN(q.killed,casualties)}% des victimes), suivis de ${fmt(q.injured)} blessés et ${fmt(q.abducted)} enlèvements.`,
+    topCommune ? `${topCommune[0]} est la commune la plus affectée, avec ${fmt(topCommune[1].total)} victimes enregistrées au T1 2026.` : '',
     `Les hommes représentent 83% des victimes, tandis que les femmes (14%) et les enfants (3%) représentent ensemble 17%.`,
   ] : [
-    `<b>${fmt(casualties)}</b> total casualties (killed and injured) from gang-related violence in Haiti documented in Q1 2026.`,
-    `Killing is the most prevalent harm: <b>${fmt(q.killed)}</b> killed (${pctN(q.killed,casualties)}% of casualties), followed by <b>${fmt(q.injured)}</b> injured. Abductions: <b>${fmt(q.abducted)}</b>.`,
-    topCommune ? `<b>${topCommune[0]}</b> is the most affected commune with <b>${fmt(topCommune[1].total)}</b> victims.` : '',
+    `In Q1 2026, a total of ${fmt(casualties)} casualties (killed and injured) from gang-related violence were documented in Haiti.`,
+    `Killing is the most prevalent form of harm, with ${fmt(q.killed)} killed (${pctN(q.killed,casualties)}% of casualties), followed by ${fmt(q.injured)} injured and ${fmt(q.abducted)} abductions.`,
+    topCommune ? `${topCommune[0]} is the most affected commune, with ${fmt(topCommune[1].total)} victims recorded in Q1 2026.` : '',
     `Men represent 83% of victims, while women (14%) and children (3%) together account for 17%.`,
   ]).filter(Boolean).map(s=>`<li>${s}</li>`).join('');
 
   if (rightEl) rightEl.innerHTML = (fr ? [
-    `1 645 victimes (69% du total) lors d'opérations de sécurité contre des gangs menées par la Police Nationale d'Haïti, parfois soutenue par la Force de Suppression des Gangs (GSF) et une société de sécurité privée ; et lors d'exécutions sommaires impliquant du personnel de police.`,
-    `653 victimes (27% du total) lors d'attaques perpetrées par des gangs. 89 victimes (4% du total) lors d'actes de violence par des groupes de justice populaire "Bwa Kalé".`,
-    `<b>${fmt(mc.total||0)}</b> cas de violence sexuelle impliquant des acteurs armés documentés au T1 2026 — <b>${fmt(mc.rape||0)}</b> viols et <b>${fmt(mc.collective_rape||0)}</b> viols collectifs. 99,6% des victimes sont des femmes.`,
+    `Les Forces de sécurité (PNH) ont causé 1 645 victimes (69% du total), lors d'opérations contre des gangs parfois soutenues par la Force de Suppression des Gangs (GSF) et une société de sécurité privée, ainsi que lors d'exécutions sommaires impliquant du personnel de police.`,
+    `Les gangs ont causé 653 victimes (27% du total), concentrées de manière disproportionnée dans les communes de Port-au-Prince et ses environs, tandis que les groupes de « justice populaire » « Bwa Kalé » ont causé 89 victimes (4%).`,
+    `Un total de ${fmt(mc.total||0)} cas de violence sexuelle impliquant des acteurs armés ont été documentés au T1 2026 — ${fmt(mc.rape||0)} viols et ${fmt(mc.collective_rape||0)} viols collectifs — avec 99,6% des victimes étant de sexe féminin.`,
     `Ces données sont suivies séparément pour éviter tout double comptage — voir la <a href="mara.html" style="color:var(--accent)">page Violence sexuelle impliquant des acteurs armés</a>.`,
   ] : [
-    `1,645 casualties (69% of total) occurred during security operations against gangs carried out by the Haitian National Police, sometimes supported by the Gang Suppression Force (GSF) and a private security company; and during summary executions involving police personnel.`,
-    `653 victims (27% of total) during attacks carried out by gangs. 89 victims (4% of total) during violent acts by popular justice groups ("Bwa Kalé").`,
-    `<b>${fmt(mc.total||0)}</b> cases of sexual violence involving armed actors documented in Q1 2026 — <b>${fmt(mc.rape||0)}</b> rape and <b>${fmt(mc.collective_rape||0)}</b> collective rape incidents. 99.6% of victims are female.`,
+    `Security Forces (PNH) caused 1,645 casualties (69% of total), including victims of operations against gangs sometimes supported by the Gang Suppression Force (GSF) and a private security company, and summary executions involving police personnel.`,
+    `Gang attacks were responsible for 653 casualties (27% of total), disproportionately concentrated in Port-au-Prince and surrounding communes, while "Bwa Kalé" popular justice actors caused 89 casualties (4%).`,
+    `A total of ${fmt(mc.total||0)} cases of sexual violence involving armed actors were documented in Q1 2026 — ${fmt(mc.rape||0)} rape and ${fmt(mc.collective_rape||0)} collective rape incidents — with 99.6% of victims being female.`,
     `Sexual violence involving armed actors data is tracked separately to avoid double-counting — see the <a href="mara.html" style="color:var(--accent)">Sexual Violence Involving Armed Actors page</a>.`,
   ]).map(s=>`<li>${s}</li>`).join('');
 

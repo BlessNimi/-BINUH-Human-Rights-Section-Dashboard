@@ -69,13 +69,13 @@ function renderPerpetrators() {
   const rightEl  = document.getElementById('insights-right');
 
   if (leftEl) leftEl.innerHTML = (fr ? [
-    `1 645 victimes (69% du total) ont été tuées ou blessées lors d'opérations de sécurité contre des gangs menées par la Police Nationale d'Haïti, parfois soutenue par la Force de Suppression des Gangs (GSF) et une société de sécurité privée ; et lors d'exécutions sommaires impliquant du personnel de police.`,
-    `653 victimes (27% du total) lors d'attaques perpétrées par des gangs, concentrées de manière disproportionnée dans des communes de Port-au-Prince et environs.`,
-    `89 victimes (4% du total) lors d'actes de violence perpétrés par des groupes d'autodéfense et des membres non organisés de la population dans le cadre du mouvement de justice populaire connu sous le nom de "Bwa Kalé".`,
+    `Les Forces de sécurité (PNH) ont causé 1 645 victimes — 69% du total T1 2026 — lors d'opérations contre des gangs, parfois soutenues par la Force de Suppression des Gangs (GSF) et une société de sécurité privée, ainsi qu'à travers des exécutions sommaires impliquant du personnel de police.`,
+    `Les gangs ont été responsables de 653 victimes (27% du total), avec une violence concentrée de manière disproportionnée dans les communes de Port-au-Prince et ses environs.`,
+    `Les acteurs de la « justice populaire » — groupes d'autodéfense et membres non organisés de la population agissant dans le cadre du mouvement « Bwa Kalé » — ont causé 89 victimes, représentant 4% du total T1 2026.`,
   ] : [
-    `1,645 casualties (69% of total) occurred during security operations against gangs carried out by the Haitian National Police, sometimes supported by the Gang Suppression Force (GSF) and a private security company; and during summary executions involving police personnel.`,
-    `653 victims (27% of total) during attacks carried out by gangs, disproportionately concentrated in Port-au-Prince and surrounding communes.`,
-    `89 victims (4% of total) during violent acts perpetrated by self-defence groups and non-organised members of the population as part of the popular justice movement known as "Bwa Kalé".`,
+    `Security Forces (PNH) caused 1,645 casualties — 69% of the Q1 2026 total — during operations against gangs, sometimes supported by the Gang Suppression Force (GSF) and a private security company, and through summary executions involving police personnel.`,
+    `Gangs were responsible for 653 casualties (27% of total), with violence disproportionately concentrated in Port-au-Prince and surrounding communes.`,
+    `"Popular justice" actors — self-defence groups and non-organised community members acting under the "Bwa Kalé" movement — caused 89 casualties, representing 4% of the Q1 2026 total.`,
   ]).map(s=>`<li>${s}</li>`).join('');
 
   if (rightEl) rightEl.innerHTML = '';

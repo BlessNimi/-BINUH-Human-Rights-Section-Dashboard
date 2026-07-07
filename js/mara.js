@@ -140,27 +140,27 @@ function renderMara() {
   const rightEl   = document.getElementById('insights-right');
 
   if (leftEl) leftEl.innerHTML = (fr ? [
-    `<b>${fmt(mTotal)}</b> victimes de violence sexuelle impliquant des acteurs armés documentées au T1 2026 — significativement sous-déclarées en raison de la stigmatisation et des risques de représailles.`,
-    `Le viol collectif représente <b>${pctN(mCollR, mTotal || 1)}%</b> de tous les cas MARA du T1 2026 (${fmt(mCollR)} victimes), indiquant l'utilisation systématique de la violence sexuelle comme outil de terreur.`,
-    `Les victimes féminines représentent <b>${pctN(mFem, mTotal || 1)}%</b> des cas documentés de violence sexuelle impliquant des acteurs armés (${fmt(mFem)} sur ${fmt(mTotal)}).`,
-    mMinor > 0 ? `<b>${fmt(mMinor)}</b> victimes documentées sont des mineurs (0–17 ans), représentant ${pctN(mMinor, mTotal || 1)}% des cas du T1 2026.` : '',
+    `Au T1 2026, ${fmt(mTotal)} victimes de violence sexuelle impliquant des acteurs armés ont été documentées — un chiffre considéré comme largement sous-déclaré en raison de la stigmatisation, des contraintes d'accès et de la peur des représailles.`,
+    `Le viol collectif représente ${pctN(mCollR, mTotal || 1)}% de tous les cas du T1 2026 (${fmt(mCollR)} victimes), indiquant l'utilisation systématique de la violence sexuelle comme outil de terreur et de contrôle social.`,
+    `Les victimes féminines représentent ${pctN(mFem, mTotal || 1)}% des cas documentés (${fmt(mFem)} sur ${fmt(mTotal)}), soulignant la dimension de genre de cette violence et la nécessité d'une réponse de protection dédiée.`,
+    mMinor > 0 ? `Parmi les victimes documentées, ${fmt(mMinor)} sont des mineurs (0–17 ans), représentant ${pctN(mMinor, mTotal || 1)}% des cas du T1 2026 — ce qui déclenche des obligations spécifiques de protection de l'enfance.` : '',
   ] : [
-    `<b>${fmt(mTotal)}</b> victims of sexual violence involving armed actors documented in Q1 2026 — significantly under-reported due to stigma, access constraints, and fear of reprisals.`,
-    `Collective rape accounts for <b>${pctN(mCollR, mTotal || 1)}%</b> of all Q1 2026 cases (${fmt(mCollR)} victims), indicating systematic use of sexual violence as a tool of terror.`,
-    `Female victims represent <b>${pctN(mFem, mTotal || 1)}%</b> of documented cases (${fmt(mFem)} of ${fmt(mTotal)}) — the gendered nature of this violence requires a dedicated protection response.`,
-    mMinor > 0 ? `<b>${fmt(mMinor)}</b> documented victims are minors (0–17), representing ${pctN(mMinor, mTotal || 1)}% of Q1 2026 cases — triggering child protection obligations.` : '',
+    `In Q1 2026, ${fmt(mTotal)} victims of sexual violence involving armed actors were documented — a figure considered significantly under-reported due to stigma, access constraints, and fear of reprisals.`,
+    `Collective rape accounts for ${pctN(mCollR, mTotal || 1)}% of all Q1 2026 cases (${fmt(mCollR)} victims), indicating the systematic use of sexual violence as a tool of terror and social control.`,
+    `Female victims represent ${pctN(mFem, mTotal || 1)}% of documented cases (${fmt(mFem)} of ${fmt(mTotal)}), underscoring the gendered nature of this violence and the need for a dedicated protection response.`,
+    mMinor > 0 ? `Among documented victims, ${fmt(mMinor)} are minors (0–17 years), representing ${pctN(mMinor, mTotal || 1)}% of Q1 2026 cases — a finding that triggers specific child protection obligations.` : '',
   ]).filter(Boolean).map(s => `<li>${s}</li>`).join('');
 
   if (rightEl) rightEl.innerHTML = (fr ? [
-    topPerp ? `<b>${lblPerp(topPerp)}</b> est le groupe le plus attribué avec <b>${fmt(maraPerp[topPerp] || 0)}</b> cas (${pctN(maraPerp[topPerp] || 0, mTotal || 1)}% du total) — les mécanismes de responsabilité doivent prioriser les cas documentés.` : '',
-    topCommune ? `<b>${topCommune[0]}</b> est la commune la plus touchée avec <b>${fmt(topCommune[1])}</b> victimes de violence sexuelle impliquant des acteurs armés — ${pctN(topCommune[1], mTotal || 1)}% du total national.` : '',
-    `Les auteurs inconnus représentent <b>${fmt(maraPerp['Unknown'] || 0)}</b> cas — reflétant les défis d'attribution et les risques de protection qui empêchent les survivants d'identifier les auteurs.`,
-    `Forces de sécurité : <b>${fmt(maraPerp['PNH / HNP'] || 0)}</b> cas de violence sexuelle impliquant des acteurs armés documentés au T1 2026 — chaque cas impliquant des forces de l'État nécessite un suivi immédiat de responsabilité.`,
+    topPerp ? `${lblPerp(topPerp)} est le groupe le plus attribué, avec ${fmt(maraPerp[topPerp] || 0)} cas documentés (${pctN(maraPerp[topPerp] || 0, mTotal || 1)}% du total), nécessitant un suivi prioritaire des mécanismes de responsabilité.` : '',
+    topCommune ? `${topCommune[0]} est la commune la plus touchée, avec ${fmt(topCommune[1])} victimes de violence sexuelle impliquant des acteurs armés (${pctN(topCommune[1], mTotal || 1)}% du total national), ce qui appelle un soutien urgent des filières d'orientation.` : '',
+    `Les auteurs inconnus représentent ${fmt(maraPerp['Unknown'] || 0)} cas, reflétant les difficultés d'attribution et les risques de protection qui empêchent les survivants d'identifier les auteurs.`,
+    `Un total de ${fmt(maraPerp['PNH / HNP'] || 0)} cas de violence sexuelle impliquant des acteurs armés ont été attribués aux Forces de sécurité au T1 2026 — chaque cas impliquant des acteurs étatiques nécessite un suivi de responsabilité immédiat.`,
   ] : [
-    topPerp ? `<b>${lblPerp(topPerp)}</b> is the most attributed perpetrator group with <b>${fmt(maraPerp[topPerp] || 0)}</b> cases (${pctN(maraPerp[topPerp] || 0, mTotal || 1)}% of total) — accountability mechanisms must prioritise documented cases.` : '',
-    topCommune ? `<b>${topCommune[0]}</b> is the most affected commune with <b>${fmt(topCommune[1])}</b> victims of sexual violence involving armed actors — ${pctN(topCommune[1], mTotal || 1)}% of the national total — requiring urgent referral pathway support.` : '',
-    `Unknown perpetrators account for <b>${fmt(maraPerp['Unknown'] || 0)}</b> cases — reflecting attribution challenges and protection risks preventing survivors from identifying perpetrators.`,
-    `Security Forces: <b>${fmt(maraPerp['PNH / HNP'] || 0)}</b> cases of sexual violence involving armed actors documented in Q1 2026 — each case involving state security forces requires immediate accountability follow-up.`,
+    topPerp ? `${lblPerp(topPerp)} is the most attributed perpetrator group, with ${fmt(maraPerp[topPerp] || 0)} documented cases (${pctN(maraPerp[topPerp] || 0, mTotal || 1)}% of the total), requiring prioritised accountability follow-up.` : '',
+    topCommune ? `${topCommune[0]} is the most affected commune, with ${fmt(topCommune[1])} victims of sexual violence involving armed actors (${pctN(topCommune[1], mTotal || 1)}% of the national total), highlighting the need for urgent referral pathway support.` : '',
+    `Unknown perpetrators account for ${fmt(maraPerp['Unknown'] || 0)} cases, reflecting attribution challenges and the protection risks that prevent survivors from identifying perpetrators.`,
+    `A total of ${fmt(maraPerp['PNH / HNP'] || 0)} cases of sexual violence involving armed actors were attributed to Security Forces in Q1 2026, and each case involving state actors requires immediate accountability follow-up.`,
   ]).filter(Boolean).map(s => `<li>${s}</li>`).join('');
 
   document.querySelectorAll('[data-count]').forEach(el => animateCounter(el, +el.dataset.count));
