@@ -59,9 +59,8 @@ function renderPerpetrators() {
     plotChart(chartId, [{
       type:'bar', orientation:'h', y:comms, x:vals,
       marker:{color:perpColor(p)},
-      text:vals.map(v => fmt(v)), textposition:'outside', cliponaxis:false,
       hovertemplate:`<b>%{y}</b><br>${fr ? 'Victimes' : 'Victims'}: %{x:,}<extra></extra>`,
-    }], { ...baseLayout(), height:280, showlegend:false, margin:{l:180,r:90,t:20,b:30} });
+    }], { ...baseLayout(), height:280, showlegend:false, margin:{l:180,r:30,t:20,b:30} });
   });
 
   // S6: Insights
